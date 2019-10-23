@@ -49,7 +49,7 @@ Please note that all programs and scripts were implemented upon the following ve
 
 #### Contents of Folder ``Lakeside Mutual``
 ---
-- ``Derived Intermediate Models`` (folder): The reconstructed models in their serialized, [intermediate form](https://github.com/anonauthor1-fase2020/languages/documentation) (XMI) for static analysis.
+- ``Derived Intermediate Models`` (folder): The reconstructed models in their serialized, [intermediate form](https://github.com/anonauthor1-fase2020/languages/tree/master/documentation) (XMI) for static analysis.
 - ``Evaluated LM Source Code`` (folder): The source code of ``Lakeside Mutual``, which we examined for evaluating our reconstruction process (cf. the application's [GitHub repository](https://github.com/Microservice-API-Patterns/LakesideMutual) for the current version).
 - ``Produced Result Files`` (folder): Files containing redirected raw outputs of scripts (cf. the Quick Steps for Reproducing the Evaluation Results).
 - ``Reconstructed Models`` (folder): The reconstructed models of ``Lakeside Mutual`` expressed in our modeling languages. They can be imported into the Eclipse versions bundled with our modeling languages (cf. the anonymized [GitHub repository](https://github.com/anonauthor1-fase2020/languages) of our languages).
