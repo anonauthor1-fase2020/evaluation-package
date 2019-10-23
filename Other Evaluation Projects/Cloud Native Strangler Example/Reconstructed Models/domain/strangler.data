@@ -1,0 +1,45 @@
+context domain {
+	structure Customer {
+		string username,
+		string firstName,
+		string lastName,
+		string email
+	}
+}
+
+context demo {
+	structure Profile {
+		long id,
+		string firstName,
+		string lastName,
+		string email,
+		string username
+	}
+
+	list Profiles { Profile p }
+
+	structure User {
+		long id,
+		string username,
+		long createdAt,
+		long lastModified
+	}
+}
+
+context interactions {
+	structure GetCustomerRequest {
+		string username
+	}
+
+	structure GetCustomerResponse {
+		domain.Customer customer
+	}
+
+	structure UpdateCustomerRequest {
+		domain.Customer customer
+	}
+
+	structure UpdateCustomerResponse {
+		boolean success
+	}
+}

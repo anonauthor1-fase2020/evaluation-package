@@ -1,0 +1,15 @@
+import microservices from "../services/Cinema.services" as services
+import technology from "../technology/javascript.technology" as javascript
+import technology from "../technology/raml.technology" as raml
+
+@technology(javascript)
+@technology(raml)
+type services::domain::v1.cinema.MoviePremieresCollection {
+	aspects { raml::_aspects.resourceType(name = "Collection"); }
+}
+
+@technology(javascript)
+@technology(raml)
+type services::domain::v1.cinema.MovieCollection {
+	aspects { raml::_aspects.resourceType(name = "Collection"); }
+}

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="">
+  <imports name="services" importUri="file://../service models/AcmeAir.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="morphia" importUri="file://../../Reconstructed Models/technology/morphia.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="domain" importUri="file://../../Reconstructed Models/domain/AcmeAir.data" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/AcmeAir.services" name="com.acmeair.^service.BookingService" qualifiedName="com.acmeair.^service.BookingService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="morphia" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <requiredMicroservices name="com.acmeair.^service.CustomerService" qualifiedName="com.acmeair.^service.CustomerService" localMicroservice="//@microservices.1"/>
+    <requiredMicroservices name="com.acmeair.^service.FlightService" qualifiedName="com.acmeair.^service.FlightService" localMicroservice="//@microservices.2"/>
+    <interfaces name="BookingService" qualifiedName="com.acmeair.^service.BookingService.BookingService" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="bookFlight" qualifiedName="com.acmeair.^service.BookingService.BookingService.bookFlight" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="customerId" qualifiedName="com.acmeair.^service.BookingService.BookingService.bookFlight.customerId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flightSegmentId" qualifiedName="com.acmeair.^service.BookingService.BookingService.bookFlight.flightSegmentId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flightId" qualifiedName="com.acmeair.^service.BookingService.BookingService.bookFlight.flightId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="bookingId" qualifiedName="com.acmeair.^service.BookingService.BookingService.bookFlight.bookingId" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getBooking" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBooking" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="user" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBooking.user">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="id" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBooking.id">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="booking" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBooking.booking" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Booking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Booking" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getBookingsByUser" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBookingsByUser" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="user" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBookingsByUser.user">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="bookings" qualifiedName="com.acmeair.^service.BookingService.BookingService.getBookingsByUser.bookings" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Bookings" origin="DATA_MODEL" kind="LIST" qualifiedName="Customer.Bookings" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="cancelBooking" qualifiedName="com.acmeair.^service.BookingService.BookingService.cancelBooking" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="user" qualifiedName="com.acmeair.^service.BookingService.BookingService.cancelBooking.user">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="id" qualifiedName="com.acmeair.^service.BookingService.BookingService.cancelBooking.id">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="count" qualifiedName="com.acmeair.^service.BookingService.BookingService.count" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="bookingCount" qualifiedName="com.acmeair.^service.BookingService.BookingService.count.bookingCount" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="DataService" import="//@imports.1">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="description" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="morphia" property="//@microservices.0/@aspects.0/@properties.0"/>
+      <propertyValues value="mongoDB with morphia implementation" property="//@microservices.0/@aspects.0/@properties.1"/>
+    </aspects>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/AcmeAir.services" name="com.acmeair.^service.CustomerService" qualifiedName="com.acmeair.^service.CustomerService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="morphia" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="CustomerService" qualifiedName="com.acmeair.^service.CustomerService.CustomerService" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="createCustomer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="username" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="password" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.password">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="status" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.status">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="MemberShipStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="Customer.MemberShipStatus" import="//@imports.2"/>
+        </parameters>
+        <parameters name="total_miles" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.total_miles">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Integer" import="//@imports.1"/>
+        </parameters>
+        <parameters name="miles_ytd" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.miles_ytd">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Integer" import="//@imports.1"/>
+        </parameters>
+        <parameters name="phoneNumber" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.phoneNumber">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="phoneNumberType" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.phoneNumberType">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PhoneType" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="Customer.PhoneType" import="//@imports.2"/>
+        </parameters>
+        <parameters name="address" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.address">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAddress" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerAddress" import="//@imports.2"/>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createCustomer.customer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Customer" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="createAddress" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="streetAddress1" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.streetAddress1">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="streetAddress2" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.streetAddress2">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="city" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.city">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="stateProvince" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.stateProvince">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="country" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.country">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="postalCode" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.postalCode">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="address" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createAddress.address" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAddress" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerAddress" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.updateCustomer" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="customer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.updateCustomer.customer" exchangePattern="INOUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Customer" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomer" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="username" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomer.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomer.customer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Customer" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomerByUsername" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsername" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="username" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsername.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsername.customer" exchangePattern="INOUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Customer" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="validateCustomer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateCustomer" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="username" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateCustomer.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="password" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateCustomer.password">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="validatedCustomer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateCustomer.validatedCustomer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Boolean" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomerByUsernameAndPassword" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsernameAndPassword" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="username" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsernameAndPassword.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="password" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsernameAndPassword.password">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getCustomerByUsernameAndPassword.customer" exchangePattern="INOUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Customer" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="validateSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateSession" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="sessionid" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateSession.sessionid">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="cSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.validateSession.cSession" exchangePattern="INOUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerSession" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerSession" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getSession" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="sessionId" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getSession.sessionId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="cSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.getSession.cSession" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerSession" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerSession" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="removeSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.removeSession" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="session" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.removeSession.session">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerSession" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerSession" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="createSessionFromCustomerId" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSessionFromCustomerId" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="customerId" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSessionFromCustomerId.customerId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="cSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSessionFromCustomerId.cSession" exchangePattern="INOUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerSession" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerSession" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="createSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSession" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="sessionId" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSession.sessionId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="customerId" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSession.customerId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="creation" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSession.creation">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Date" import="//@imports.1"/>
+        </parameters>
+        <parameters name="expiration" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSession.expiration">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Date" import="//@imports.1"/>
+        </parameters>
+        <parameters name="cSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.createSession.cSession" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerSession" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerSession" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="invalidateSession" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.invalidateSession" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="sessionId" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.invalidateSession.sessionId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="count" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.count" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="customerCount" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.count.customerCount" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="countSessions" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.countSessions" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="sessionCount" qualifiedName="com.acmeair.^service.CustomerService.CustomerService.countSessions.sessionCount" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="DataService" import="//@imports.1">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="description" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="morphia" property="//@microservices.1/@aspects.0/@properties.0"/>
+      <propertyValues value="mongoDB with morphia implementation" property="//@microservices.1/@aspects.0/@properties.1"/>
+    </aspects>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/AcmeAir.services" name="com.acmeair.^service.FlightService" qualifiedName="com.acmeair.^service.FlightService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="morphia" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="FlightService" qualifiedName="com.acmeair.^service.FlightService.FlightService" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getFlightByFlightId" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByFlightId" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="flightId" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByFlightId.flightId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flightSegment" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByFlightId.flightSegment">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flight" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByFlightId.flight" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Flight" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.Flight" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getFlight" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlight" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="flightId" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlight.flightId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flightSegment" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlight.flightSegment">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flight" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlight.flight" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Flight" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.Flight" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getFlightByAirportsAndDepartureDate" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirportsAndDepartureDate" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="fromAirport" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirportsAndDepartureDate.fromAirport">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="toAirport" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirportsAndDepartureDate.toAirport">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="deptDate" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirportsAndDepartureDate.deptDate">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Date" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flights" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirportsAndDepartureDate.flights" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Flights" origin="DATA_MODEL" kind="LIST" qualifiedName="Flight.Flights" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getFlightByAirports" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirports" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="fromAirport" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirports.fromAirport">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="toAirport" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirports.toAirport">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flights" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightByAirports.flights" exchangePattern="INOUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Flights" origin="DATA_MODEL" kind="LIST" qualifiedName="Flight.Flights" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getFlightSegment" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightSegment" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="fromAirport" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightSegment.fromAirport">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="toAirport" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightSegment.toAirport">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="segment" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightSegment.segment" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="FlightSegment" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.FlightSegment" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getFlightBySegment" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightBySegment" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="protected" import="//@imports.1"/>
+        <parameters name="segment" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightBySegment.segment">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="FlightSegment" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.FlightSegment" import="//@imports.2"/>
+        </parameters>
+        <parameters name="deptDate" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightBySegment.deptDate">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Date" import="//@imports.1"/>
+        </parameters>
+        <parameters name="flights" qualifiedName="com.acmeair.^service.FlightService.FlightService.getFlightBySegment.flights" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Flights" origin="DATA_MODEL" kind="LIST" qualifiedName="Flight.Flights" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="storeAirportMapping" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeAirportMapping" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="mapping" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeAirportMapping.mapping">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AirportCodeMapping" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Airport.AirportCodeMapping" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="createAirportCodeMapping" qualifiedName="com.acmeair.^service.FlightService.FlightService.createAirportCodeMapping" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="airportCode" qualifiedName="com.acmeair.^service.FlightService.FlightService.createAirportCodeMapping.airportCode">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="airportName" qualifiedName="com.acmeair.^service.FlightService.FlightService.createAirportCodeMapping.airportName">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="acm" qualifiedName="com.acmeair.^service.FlightService.FlightService.createAirportCodeMapping.acm" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AirportCodeMapping" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Airport.AirportCodeMapping" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="createNewFlight" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="flightSegmentId" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.flightSegmentId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="scheduledDepartureTime" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.scheduledDepartureTime">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Date" import="//@imports.1"/>
+        </parameters>
+        <parameters name="scheduledArrivalTime" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.scheduledArrivalTime">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Date" import="//@imports.1"/>
+        </parameters>
+        <parameters name="firstClassBaseCost" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.firstClassBaseCost">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="BigDecimal" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.BigDecimal" import="//@imports.1"/>
+        </parameters>
+        <parameters name="economyClassBaseCost" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.economyClassBaseCost">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="BigDecimal" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.BigDecimal" import="//@imports.1"/>
+        </parameters>
+        <parameters name="numFirstClassSeats" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.numFirstClassSeats">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Integer" import="//@imports.1"/>
+        </parameters>
+        <parameters name="numEconomyClassSeats" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.numEconomyClassSeats">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Integer" import="//@imports.1"/>
+        </parameters>
+        <parameters name="airplaneTypeId" qualifiedName="com.acmeair.^service.FlightService.FlightService.createNewFlight.airplaneTypeId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="storeFlightSegmentFromSegment" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegmentFromSegment" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="flightSeg" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegmentFromSegment.flightSeg">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="FlightSegment" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.FlightSegment" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="storeFlightSegment" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegment" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="flightName" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegment.flightName">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="origPort" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegment.origPort">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="destPort" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegment.destPort">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="miles" qualifiedName="com.acmeair.^service.FlightService.FlightService.storeFlightSegment.miles">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Integer" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="countFlightSegments" qualifiedName="com.acmeair.^service.FlightService.FlightService.countFlightSegments" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="allSegmentsCount" qualifiedName="com.acmeair.^service.FlightService.FlightService.countFlightSegments.allSegmentsCount" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="countFlights" qualifiedName="com.acmeair.^service.FlightService.FlightService.countFlights" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="allFlightsCount" qualifiedName="com.acmeair.^service.FlightService.FlightService.countFlights.allFlightsCount" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="countAirports" qualifiedName="com.acmeair.^service.FlightService.FlightService.countAirports" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="allAirportsCount" qualifiedName="com.acmeair.^service.FlightService.FlightService.countAirports.allAirportsCount" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="DataService" import="//@imports.1">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="description" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="morphia" property="//@microservices.2/@aspects.0/@properties.0"/>
+      <propertyValues value="mongoDB with morphia implementation" property="//@microservices.2/@aspects.0/@properties.1"/>
+    </aspects>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/AcmeAir.services" name="com.acmeair.^service.TransactionService" qualifiedName="com.acmeair.^service.TransactionService" type="UTILITY" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="morphia" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="TransactionService" qualifiedName="com.acmeair.^service.TransactionService.TransactionService" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="prepareForTransaction" qualifiedName="com.acmeair.^service.TransactionService.TransactionService.prepareForTransaction" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="exception" qualifiedName="com.acmeair.^service.TransactionService.TransactionService.prepareForTransaction.exception" exchangePattern="OUT" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Exception" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="morphia._types.Exception" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

@@ -1,0 +1,27 @@
+import technology from "../technology/javascript.technology" as javascript
+import technology from "../technology/rest.technology" as REST
+import datatypes from "../domain/Cinema.data" as domain
+
+@technology(javascript)
+@technology(REST)
+functional microservice cinema.api.MovieService {
+	interface Movies {
+		@endpoints(REST::_protocols.rest: "/movies";)
+		getAllMovies(
+			@REST::_aspects.ok
+			sync out movies : domain::v1.cinema.Movies
+		);
+
+		@endpoints(REST::_protocols.rest: "/movies/premieres";)
+		getMoviePremieres(
+			@REST::_aspects.ok
+			sync out movies : domain::v1.cinema.MoviePremieresCollection
+		);
+
+		@endpoints(REST::_protocols.rest: "/movies/:id";)
+		getMovieById(
+			@REST::_aspects.ok
+			sync out movies : domain::v1.cinema.MovieCollection
+		);
+	}
+}

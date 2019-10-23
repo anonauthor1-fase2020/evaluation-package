@@ -1,0 +1,6 @@
+context demo {
+	structure User {
+		long id,
+		string username
+	}
+}

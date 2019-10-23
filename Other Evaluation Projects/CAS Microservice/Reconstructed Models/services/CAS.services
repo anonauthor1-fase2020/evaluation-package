@@ -1,0 +1,29 @@
+import datatypes from "../domain/CAS.data" as domain
+import technology from "../technology/springBoot.technology" as springBoot
+
+@technology(springBoot)
+functional microservice br.com.alexandre.customer.api.CustomerService {
+	required microservices {
+		api.WishListService
+	}
+
+	@endpoints(springBoot::_protocols.rest/json: "/customer";)
+	interface Customer {
+		@springBoot::_aspects.get
+		find(sync out customer : domain::Customer);
+
+		internal getMyWishList(sync out wishes : domain::WishList);
+		internal getUserName(sync out username : string);
+	}
+}
+
+@technology(springBoot)
+functional microservice br.com.alexandre.api.WishListService {
+	@endpoints(springBoot::_protocols.rest: "/wishList";)
+	interface Product {
+		@springBoot::_aspects.get
+		getMyWishList(sync out products : domain::Products);
+
+		internal getUserName(sync out username : string);
+	}
+}

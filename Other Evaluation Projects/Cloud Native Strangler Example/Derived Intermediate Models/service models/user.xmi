@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/microservices/user.services">
+  <imports name="spring" importUri="file://../../Reconstructed Models/technology/spring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="java" importUri="file://../../Reconstructed Models/technology/java.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="hystrix" importUri="file://../../Reconstructed Models/technology/hystrix.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="user" importUri="file://../data models/user.xmi" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/microservices/user.services" name="demo.api.v1.UserService" qualifiedName="demo.api.v1.UserService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <technologies name="spring" import="//@imports.0"/>
+    <technologies name="hystrix" import="//@imports.2"/>
+    <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+      <addresses>/v1</addresses>
+    </endpoints>
+    <protocols protocol="rest" dataFormat="json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+    <interfaces name="user" qualifiedName="demo.api.v1.UserService.user" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+      <operations name="me" qualifiedName="demo.api.v1.UserService.user.me" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/me</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <parameters name="principal" qualifiedName="demo.api.v1.UserService.user.me.principal">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Principal" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.Principal" import="//@imports.1"/>
+        </parameters>
+        <parameters name="result" qualifiedName="demo.api.v1.UserService.user.me.result" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.ResponseEntity" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="user" qualifiedName="demo.api.v1.UserService.user.user" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/user</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <parameters name="principal" qualifiedName="demo.api.v1.UserService.user.user.principal">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Principal" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.Principal" import="//@imports.1"/>
+        </parameters>
+        <parameters name="result" qualifiedName="demo.api.v1.UserService.user.user.result" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Principal" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.Principal" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getUserByUsername" qualifiedName="demo.api.v1.UserService.user.getUserByUsername" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <aspects name="command" import="//@imports.2"/>
+        <parameters name="username" qualifiedName="demo.api.v1.UserService.user.getUserByUsername.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="user" qualifiedName="demo.api.v1.UserService.user.getUserByUsername.user" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="User" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.User" import="//@imports.3"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="application" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="user-service" property="//@microservices.0/@aspects.0/@properties.0"/>
+    </aspects>
+  </microservices>
+</intermediate:IntermediateServiceModel>

@@ -1,0 +1,18 @@
+technology hystrix {
+	service aspects{
+		aspect command for operations;
+	}
+
+	infrastructure technologies {
+		HystrixDashboard {
+			operation environments = "hystrix" default;
+		}
+	}
+
+	operation aspects {
+		aspect enableHystrix for containers, infrastructure;
+		aspect timeoutInMilliseconds for infrastructure {
+			int timeout <mandatory>;
+		}
+	}
+}

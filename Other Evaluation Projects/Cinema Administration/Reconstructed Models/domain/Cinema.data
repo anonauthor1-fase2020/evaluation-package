@@ -1,0 +1,19 @@
+version v1 {
+	context cinema {
+		structure Movie {
+			string id,
+			string title,
+			int runtime,
+			string format,
+			string plot,
+			int releaseYear,
+			int releaseMonth,
+			int releaseDay
+		}
+		list Movies { Movie m }
+		list MovieCollection { Movie m }
+
+		list MoviePremieres { Movie m }
+		list MoviePremieresCollection { MoviePremieres mp }
+	}
+}

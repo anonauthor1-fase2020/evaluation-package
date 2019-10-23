@@ -1,0 +1,101 @@
+import microservices from "../services/AcmeAir.services" as services
+import technology from "../technology/morphia.technology" as morphia
+
+@technology(morphia)
+type services::domain::Airport.AirportCodeMapping {
+	aspects {
+		morphia::_aspects.Entity("airportCodeMapping");
+	}
+}
+
+@technology(morphia)
+type services::domain::Customer.Booking {
+	aspects {
+		morphia::_aspects.Entity("booking");
+	}
+}
+
+@technology(morphia)
+type services::domain::Customer.Customer {
+	aspects {
+		morphia::_aspects.Entity("customer");
+	}
+}
+
+@technology(morphia)
+type services::domain::Customer.CustomerSession {
+	aspects {
+		morphia::_aspects.Entity("customerSession");
+	}
+}
+
+@technology(morphia)
+type services::domain::Flight.Flight {
+	aspects {
+		morphia::_aspects.Entity("flight");
+	}
+
+	firstClassBaseCost : morphia::_types.BigDecimal;
+}
+
+@technology(morphia)
+type services::domain::Flight.FlightSegment {
+	aspects {
+		morphia::_aspects.Entity("flightSegment");
+	}
+}
+
+@technology(morphia)
+services::com.acmeair.^service.BookingService {
+	aspects {
+		morphia::_aspects.DataService(
+			name = "morphia",
+			description = "mongoDB with morphia implementation"
+		);
+	}
+}
+
+@technology(morphia)
+services::com.acmeair.^service.CustomerService {
+	aspects {
+		morphia::_aspects.DataService(
+			name = "morphia",
+			description = "mongoDB with morphia implementation"
+		);
+	}
+
+	operation CustomerService.getCustomer { aspects { morphia::_aspects.protected; } }
+	operation CustomerService.getSession { aspects { morphia::_aspects.protected; } }
+	operation CustomerService.removeSession { aspects { morphia::_aspects.protected; } }
+	operation CustomerService.createSession { aspects { morphia::_aspects.protected; } }
+}
+
+@technology(morphia)
+services::com.acmeair.^service.FlightService {
+	aspects {
+		morphia::_aspects.DataService(
+			name = "morphia",
+			description = "mongoDB with morphia implementation"
+		);
+	}
+
+	operation FlightService.createNewFlight {
+		parameters {
+			primitive firstClassBaseCost : morphia::_types.BigDecimal;
+			primitive economyClassBaseCost : morphia::_types.BigDecimal;
+		}
+	}
+
+	operation FlightService.getFlight { aspects { morphia::_aspects.protected; } }
+	operation FlightService.getFlightSegment { aspects { morphia::_aspects.protected; } }
+	operation FlightService.getFlightBySegment { aspects { morphia::_aspects.protected; } }
+}
+
+@technology(morphia)
+services::com.acmeair.^service.TransactionService {
+	operation TransactionService.prepareForTransaction {
+		parameters {
+			primitive exception : morphia::_types.Exception;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+technology nginx {
+	infrastructure technologies {
+		nginx {
+			operation environments = "java:8-jdk" default;
+
+			service properties {
+				string nodeName;
+				string expose;
+			}
+		}
+	}
+
+	operation aspects {
+		aspect serverConfiguration for infrastructure {
+			string contents;
+		}
+	}
+}

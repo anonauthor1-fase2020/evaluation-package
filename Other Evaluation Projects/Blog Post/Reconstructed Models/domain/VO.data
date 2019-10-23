@@ -1,0 +1,19 @@
+structure CardVO {
+	long id,
+	string cardHolderName,
+	string pan,
+	string validDate
+}
+
+list CardVOs { CardVO c }
+
+structure StatementVO {
+	long id,
+	long cardId,
+	string operationDate,
+	string value
+}
+
+list StatementVOs { StatementVO s }
+
+list StatementsToCards { CardVO c, StatementVOs s }

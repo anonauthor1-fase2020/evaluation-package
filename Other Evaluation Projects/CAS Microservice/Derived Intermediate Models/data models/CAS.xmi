@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../Reconstructed Models/domain/CAS.data">
+  <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer">
+    <dataFields name="id" qualifiedName="Customer.id">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+    <dataFields name="name" qualifiedName="Customer.name">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+    <dataFields name="username" qualifiedName="Customer.username">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+    <dataFields name="wishList" qualifiedName="Customer.wishList">
+      <type xsi:type="intermediate:IntermediateComplexType" name="WishList" origin="DATA_MODEL" kind="LIST" qualifiedName="WishList"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Product" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Product">
+    <dataFields name="id" qualifiedName="Product.id">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+    <dataFields name="name" qualifiedName="Product.name">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="WishList" origin="DATA_MODEL" kind="LIST" qualifiedName="WishList" structuredList="true">
+    <dataFields name="wish" qualifiedName="WishList.wish">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="Products" origin="DATA_MODEL" kind="LIST" qualifiedName="Products" structuredList="true">
+    <dataFields name="p" qualifiedName="Products.p">
+      <type xsi:type="intermediate:IntermediateComplexType" name="Product" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Product"/>
+    </dataFields>
+  </complexTypes>
+</intermediate:IntermediateDataModel>

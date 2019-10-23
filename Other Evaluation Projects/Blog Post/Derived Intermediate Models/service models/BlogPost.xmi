@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/services/BlogPost.services">
+  <imports name="springBoot" importUri="file://../../Reconstructed Models/technology/springBoot.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="domain" importUri="file://../../Derived Intermediate Models/data models/BlogPost.xmi" importTypeName="DATATYPES"/>
+  <imports name="VO" importUri="file://../../Derived Intermediate Models/data models/VO.xmi" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/BlogPost.services" name="com.spring.netflix.oss.^microservices.api.CardService" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.0"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="cards" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getCards" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.getCards" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.0">
+          <addresses>/api/cards</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cards" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.getCards.cards" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Cards" origin="DATA_MODEL" kind="LIST" qualifiedName="Cards" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getCard" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.getCard" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.0">
+          <addresses>/api/card/{cardId}</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cardId" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.getCard.cardId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+          <aspects name="pathVariable" import="//@imports.0"/>
+        </parameters>
+        <parameters name="card" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.getCard.card" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Card" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Card" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="createCard" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.createCard" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.0">
+          <addresses>/api/new-card</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="post" import="//@imports.0"/>
+        <parameters name="newCard" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService.cards.createCard.newCard">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Card" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Card" import="//@imports.1"/>
+          <aspects name="requestBody" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="Application" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="card-service" property="//@microservices.0/@aspects.0/@properties.0"/>
+    </aspects>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/BlogPost.services" name="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.0"/>
+    <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+      <addresses>/api</addresses>
+    </endpoints>
+    <protocols protocol="rest" dataFormat="json"/>
+    <requiredMicroservices name="com.spring.netflix.oss.^microservices.api.CardService" qualifiedName="com.spring.netflix.oss.^microservices.api.CardService" localMicroservice="//@microservices.0"/>
+    <requiredMicroservices name="com.spring.netflix.oss.^microservices.api.StatementService" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService" localMicroservice="//@microservices.3"/>
+    <interfaces name="cardClient" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getCards" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.getCards" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/cards</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cards" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.getCards.cards" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CardVOs" origin="DATA_MODEL" kind="LIST" qualifiedName="CardVOs" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getCard" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.getCard" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/card/{cardId}</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cardId" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.getCard.cardId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+          <aspects name="pathVariable" import="//@imports.0"/>
+        </parameters>
+        <parameters name="card" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.getCard.card" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CardVO" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CardVO" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="createCard" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.createCard" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/new-card</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="post" import="//@imports.0"/>
+        <parameters name="card" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.cardClient.createCard.card">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CardVO" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CardVO" import="//@imports.2"/>
+          <aspects name="requestBody" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <aspects name="FeignClient" import="//@imports.0">
+        <properties name="name" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <propertyValues value="card-service" property="//@microservices.1/@interfaces.0/@aspects.0/@properties.0"/>
+      </aspects>
+    </interfaces>
+    <interfaces name="statementClient" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getAllStatements" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getAllStatements" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/statements</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="statements" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getAllStatements.statements" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="StatementVOs" origin="DATA_MODEL" kind="LIST" qualifiedName="StatementVOs" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getStatement" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getStatement" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/statement/{statementId}</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="statementId" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getStatement.statementId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+          <aspects name="pathVariable" import="//@imports.0"/>
+        </parameters>
+        <parameters name="statement" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getStatement.statement" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="StatementVO" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="StatementVO" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="getStatements" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getStatements" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/statement</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cardId" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getStatements.cardId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+          <aspects name="requestParam" import="//@imports.0"/>
+        </parameters>
+        <parameters name="statements" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.statementClient.getStatements.statements" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="StatementVOs" origin="DATA_MODEL" kind="LIST" qualifiedName="StatementVOs" import="//@imports.2"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="controller" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.controller" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getStatementByCardId" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.controller.getStatementByCardId" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+          <addresses>/statement-by-card</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="HystrixCommand" import="//@imports.0">
+          <properties name="fallbackMethod" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="defaultCardStatementError" property="//@microservices.1/@interfaces.2/@operations.0/@aspects.0/@properties.0"/>
+        </aspects>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cardId" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.controller.getStatementByCardId.cardId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+        </parameters>
+        <parameters name="statements" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.controller.getStatementByCardId.statements" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Map" origin="TECHNOLOGY" kind="LIST" qualifiedName="springBoot._types.Map" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="defaultCardStatementError" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.controller.defaultCardStatementError" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="cardId" qualifiedName="com.spring.netflix.oss.^microservices.^service.CardStatementServiceController.controller.defaultCardStatementError.cardId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="Application" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="card-statement-composite" property="//@microservices.1/@aspects.0/@properties.0"/>
+    </aspects>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/BlogPost.services" name="com.spring.netflix.oss.^microservices.MonitorDashboard" qualifiedName="com.spring.netflix.oss.^microservices.MonitorDashboard" type="INFRASTRUCTURE" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.0"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="dashboard" qualifiedName="com.spring.netflix.oss.^microservices.MonitorDashboard.dashboard" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="home" qualifiedName="com.spring.netflix.oss.^microservices.MonitorDashboard.dashboard.home" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.2/@technologies.0">
+          <addresses>/</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="action" qualifiedName="com.spring.netflix.oss.^microservices.MonitorDashboard.dashboard.home.action" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.String" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="Application" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="monitor-dashboard" property="//@microservices.2/@aspects.0/@properties.0"/>
+    </aspects>
+    <aspects name="HystrixDashboard" import="//@imports.0"/>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/BlogPost.services" name="com.spring.netflix.oss.^microservices.api.StatementService" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.0"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="statements" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getAllStatements" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getAllStatements" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.3/@technologies.0">
+          <addresses>/api/statements</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="statements" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getAllStatements.statements" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Statements" origin="DATA_MODEL" kind="LIST" qualifiedName="Statements" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getStatement" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getStatement" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.3/@technologies.0">
+          <addresses>/api/statement/{statementId}</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="statementId" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getStatement.statementId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+          <aspects name="pathVariable" import="//@imports.0"/>
+        </parameters>
+        <parameters name="statement" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getStatement.statement" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Statement" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Statement" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getStatements" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getStatements" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.3/@technologies.0">
+          <addresses>/api/statement</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.0"/>
+        <parameters name="cardId" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getStatements.cardId">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.0"/>
+          <aspects name="requestParam" import="//@imports.0"/>
+        </parameters>
+        <parameters name="statements" qualifiedName="com.spring.netflix.oss.^microservices.api.StatementService.statements.getStatements.statements" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Statements" origin="DATA_MODEL" kind="LIST" qualifiedName="Statements" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="Application" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="statement-service" property="//@microservices.3/@aspects.0/@properties.0"/>
+    </aspects>
+  </microservices>
+</intermediate:IntermediateServiceModel>

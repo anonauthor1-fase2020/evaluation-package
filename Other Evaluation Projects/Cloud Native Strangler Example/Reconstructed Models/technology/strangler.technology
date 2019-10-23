@@ -1,0 +1,5 @@
+technology strangler {
+	service aspects {
+		aspect baseEntity for types;
+	}
+}

@@ -1,0 +1,19 @@
+technology nodejs {
+	infrastructure technologies {
+		nodejs {
+			operation environments = "node:7.2.0" default;
+
+			service properties {
+				string require;
+
+				string run;
+				string env;
+				string copy;
+				string workdir;
+				string user;
+				int expose;
+				string cmd;
+			}
+		}
+	}
+}

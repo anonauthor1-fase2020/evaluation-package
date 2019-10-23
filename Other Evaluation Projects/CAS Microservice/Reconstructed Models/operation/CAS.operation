@@ -1,0 +1,203 @@
+import microservices from "../services/CAS.services" as cas
+import technology from "../technology/springBoot.technology" as springBoot
+import technology from "../technology/nginx.technology" as nginx
+
+@technology(springBoot)
+container CustomerServiceContainer deployment technology springBoot::_deployment.Docker
+	with operation environment "java:8-jdk"
+	deploys cas::br.com.alexandre.customer.api.CustomerService {
+	default values {
+		nodeName = "customer-service"
+		maintainer = "Alexandre Arcanjo de Queiroz"
+
+		run =
+		"
+			apt-get update && \\
+    		apt-get update --fix-missing && \\
+    		apt-get install -y wget
+		"
+
+		env = "JETTY_VERSION 9.3.14"
+		env = "RELEASE_DATE v20161028"
+		env = "JETTY_HOME /opt/jetty"
+
+		run =
+		"
+			wget http://central.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${JETTY_VERSION}.${RELEASE_DATE}/jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}.tar.gz && \\
+    		tar -xzvf jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}.tar.gz && \\
+    		rm -rf jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}.tar.gz && \\
+    		mv jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}/ /opt/jetty
+		"
+
+		workdir = "/opt/jetty"
+
+		arg = "KEYSTORE"
+		arg = "KEYSTORE_PASSWORD"
+
+		add = "$KEYSTORE $JETTY_HOME/etc/mycert"
+
+		run =
+		'
+			keytool -importkeystore -srckeystore $JETTY_HOME/etc/mycert \\
+            -srcstorepass $KEYSTORE_PASSWORD \\
+            -destkeystore $JAVA_HOME/jre/lib/security/cacerts \\
+            -deststorepass $KEYSTORE_PASSWORD -noprompt && \\
+    		java -jar $JETTY_HOME/start.jar --add-to-startd=https,ssl && \\
+    		echo "--exec"  >> $JETTY_HOME/start.ini && \\
+    		echo "-Xdebug" >> $JETTY_HOME/start.ini && \\
+    		echo "-agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n" >> $JETTY_HOME/start.ini && \\
+    		rm $JETTY_HOME/etc/mycert
+		'
+
+		add = "./web/target/customer-service-web.war /opt/jetty/webapps/customer-service.war"
+
+		run =
+		"
+			useradd jetty && \\
+    		chown -R jetty:jetty /opt/jetty && \\
+    		rm -rf demo-base
+		"
+
+		cmd = '["java", "-jar", "start.jar", "jetty.home=/opt/jetty"]'
+
+		expose = "9090:8080"
+		expose = "9443:8443"
+		expose = "9590:9999"
+
+		basic endpoints { springBoot::_protocols.rest: "https://api.alexandre.com.br/customer-service"; }
+	}
+}
+
+@technology(springBoot)
+container WishListServiceContainer deployment technology springBoot::_deployment.Docker
+	with operation environment "java:8-jdk"
+	deploys cas::br.com.alexandre.api.WishListService {
+	default values {
+		nodeName = "product-service"
+		maintainer = "Alexandre Arcanjo de Queiroz"
+
+		run =
+		"
+			apt-get update && \\
+    		apt-get update --fix-missing && \\
+    		apt-get install -y wget
+		"
+
+		env = "JETTY_VERSION 9.3.14"
+		env = "RELEASE_DATE v20161028"
+		env = "JETTY_HOME /opt/jetty"
+
+		run =
+		"
+			wget http://central.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${JETTY_VERSION}.${RELEASE_DATE}/jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}.tar.gz && \\
+    		tar -xzvf jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}.tar.gz && \\
+    		rm -rf jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}.tar.gz && \\
+    		mv jetty-distribution-${JETTY_VERSION}.${RELEASE_DATE}/ /opt/jetty
+		"
+
+		workdir = "/opt/jetty"
+
+		arg = "KEYSTORE"
+		arg = "KEYSTORE_PASSWORD"
+
+		add = "$KEYSTORE $JETTY_HOME/etc/mycert"
+
+		run =
+		'
+			keytool -importkeystore -srckeystore $JETTY_HOME/etc/mycert \\
+            -srcstorepass $KEYSTORE_PASSWORD \\
+            -destkeystore $JAVA_HOME/jre/lib/security/cacerts \\
+            -deststorepass $KEYSTORE_PASSWORD -noprompt && \\
+    		java -jar $JETTY_HOME/start.jar --add-to-startd=https,ssl && \\
+    		echo "--exec"  >> $JETTY_HOME/start.ini && \\
+    		echo "-Xdebug" >> $JETTY_HOME/start.ini && \\
+    		echo "-agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n" >> $JETTY_HOME/start.ini && \\
+    		rm $JETTY_HOME/etc/mycert
+		'
+
+		add = "./web/target/product-service-web.war /opt/jetty/webapps/product-service.war"
+
+		run =
+		"
+			useradd jetty && \\
+    		chown -R jetty:jetty /opt/jetty && \\
+    		rm -rf demo-base
+		"
+
+		cmd = '["java", "-jar", "start.jar", "jetty.home=/opt/jetty"]'
+
+		expose = "9091:8080"
+		expose = "9444:8443"
+		expose = "9591:9999"
+
+		basic endpoints { springBoot::_protocols.rest: "https://api.alexandre.com.br/product-service"; }
+	}
+}
+
+@technology(nginx)
+webServer is nginx::_infrastructure.nginx
+	used by services
+		cas::br.com.alexandre.customer.api.CustomerService,
+		cas::br.com.alexandre.api.WishListService {
+	aspects {
+		nginx::_aspects.serverConfiguration(
+			"
+				listen 80 default_server;
+				listen [::]:80 default_server ipv6only=on;
+
+				root /usr/share/nginx/html;
+				index index.html index.htm;
+
+				server_name localhost;
+
+				location / {
+					try_files $uri $uri/ =404;
+				}
+			"
+		);
+
+		nginx::_aspects.serverConfiguration(
+			"
+				listen 443;
+        		ssl on;
+        		ssl_certificate /etc/nginx/ssl/certificate.crt;
+        		ssl_certificate_key /etc/nginx/ssl/certificate.key;
+        		server_name portal.alexandre.com.br;
+
+        		root /usr/share/nginx/html;
+        		index index.html index.htm;
+
+        		location /cas/ {
+            		proxy_pass https://portal.alexandre.com.br:8443/cas/;
+        		}
+			"
+		);
+
+		nginx::_aspects.serverConfiguration(
+			"
+				listen 443;
+        		ssl on;
+        		ssl_certificate /etc/nginx/ssl/certificate.crt;
+        		ssl_certificate_key /etc/nginx/ssl/certificate.key;
+        		server_name api.alexandre.com.br;
+
+        		root /usr/share/nginx/html;
+        		index index.html index.htm;
+
+        		location /customer-service/ {
+            		proxy_pass http://api.alexandre.com.br:9090/customer-service/;
+        		}
+
+        		location /product-service/ {
+            		proxy_pass http://api.alexandre.com.br:9091/product-service/;
+        		}
+			"
+		);
+	}
+
+	default values {
+		nodeName = "docker-nginx"
+		expose = "80:80"
+		expose = "443:443"
+	}
+}

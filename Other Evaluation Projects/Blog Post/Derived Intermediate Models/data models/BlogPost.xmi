@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/domain/BlogPost.data">
+  <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Card" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Card">
+    <dataFields name="id" qualifiedName="Card.id">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+    <dataFields name="cardHolderName" qualifiedName="Card.cardHolderName">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+    <dataFields name="pan" qualifiedName="Card.pan">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+    <dataFields name="validDate" qualifiedName="Card.validDate">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Statement" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Statement">
+    <dataFields name="id" qualifiedName="Statement.id">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+    <dataFields name="cardId" qualifiedName="Statement.cardId">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+    <dataFields name="operationDate" qualifiedName="Statement.operationDate">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+    <dataFields name="value" qualifiedName="Statement.value">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="Cards" origin="DATA_MODEL" kind="LIST" qualifiedName="Cards" structuredList="true">
+    <dataFields name="c" qualifiedName="Cards.c">
+      <type xsi:type="intermediate:IntermediateComplexType" name="Card" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Card"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="Statements" origin="DATA_MODEL" kind="LIST" qualifiedName="Statements" structuredList="true">
+    <dataFields name="s" qualifiedName="Statements.s">
+      <type xsi:type="intermediate:IntermediateComplexType" name="Statement" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Statement"/>
+    </dataFields>
+  </complexTypes>
+</intermediate:IntermediateDataModel>

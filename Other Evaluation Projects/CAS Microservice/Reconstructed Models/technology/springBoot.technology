@@ -1,0 +1,140 @@
+technology springBoot {
+	types {
+		primitive type Boolean based on boolean default;
+		primitive type Byte based on byte default;
+		primitive type Character based on char default;
+		primitive type Date based on date default;
+		primitive type Double based on double default;
+		primitive type Float based on float default;
+		primitive type Integer based on int default;
+		primitive type Long based on long default;
+		primitive type Short based on short default;
+		primitive type String based on string default;
+
+		list type Collection;
+		list type Iterable;
+		list type Resources;
+		structure type Pageable;
+		structure type Page;
+		structure type Sort;
+		structure type Example;
+		structure type Optional;
+	}
+
+	protocols {
+		sync rest data formats json, xml default with format json;
+	}
+
+	service aspects {
+		aspect Map for types;
+		aspect Entity for types;
+		aspect JsonIgnoreProperties for types { boolean ignoreUnknown = true; }
+		aspect Id for fields;
+		aspect GeneratedValue for fields;
+		aspect XmlRootElement for types;
+
+		aspect Application for microservices { string name <mandatory>; }
+		aspect JpaRepository for microservices;
+
+		aspect EnableZuulProxy for microservices;
+		aspect FeignClient for interfaces { string name <mandatory>; }
+		aspect HystrixDashboard for microservices;
+		aspect HystrixCommand for operations { string fallbackMethod <mandatory>; }
+		aspect CrossOrigin for operations { string origins <mandatory>; }
+		aspect get for operations;
+		aspect post for operations;
+		aspect pathVariable for parameters;
+		aspect requestBody for parameters;
+		aspect requestParam for parameters;
+	}
+
+	deployment technologies {
+		Docker {
+			operation environments = "java:8-jre" default, "java:8-jdk";
+
+			service properties {
+				string nodeName;
+
+				string volume;
+				string env;
+				string add;
+				string entrypoint;
+				string expose;
+				string maintainer;
+				string run;
+				string workdir;
+				string arg;
+				string cmd;
+			}
+		}
+	}
+
+	infrastructure technologies {
+		Eureka {
+			operation environments = "java:8-jre" default;
+
+			service properties {
+				string name <mandatory, singleval>;
+				string hostname <singleval>;
+				int port <singleval>;
+				int nonSecurePort <singleval>;
+				string instanceId <singleval>;
+				int leaseRenewalIntervalInSeconds <singleval>;
+				string region <singleval>;
+				boolean clientRegisterWithEureka = true <singleval>;
+				int registryFetchIntervalSeconds <singleval>;
+				string defaultZone <singleval>;
+				string docker_compose_entrypoint <singleval>;
+
+				string volume;
+				string env;
+				string add;
+				string entrypoint;
+				int expose;
+			}
+		}
+
+		ConfigServer {
+			operation environments = "java:8-jre" default;
+
+			service properties {
+				string name <mandatory, singleval>;
+				string git_uri <singleval>;
+				string git_search_path <singleval>;
+				string volume;
+				string env;
+				string add;
+				string entrypoint;
+				int expose;
+			}
+		}
+
+		EdgeServer {
+			operation environments = "java:8-jre" default;
+
+			service properties {
+				string name <mandatory, singleval>;
+
+				string volume;
+				string env;
+				string add;
+				string entrypoint;
+				int expose;
+			}
+		}
+
+		TurbineAggregator {
+			operation environments = "java:8-jre" default;
+
+			service properties {
+				string name <mandatory, singleval>;
+
+				string volume;
+				string env;
+				string add;
+				string entrypoint;
+				int expose;
+			}
+		}
+	}
+}

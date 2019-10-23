@@ -1,0 +1,31 @@
+import technology from "../technology/morphia.technology" as morphia
+import microservices from "../services/AcmeAir.services" as AcmeAirServices
+
+@technology(morphia)
+serviceLocator is morphia::_infrastructure.ServiceLocator
+	used by services
+		AcmeAirServices::com.acmeair.^service.BookingService,
+		AcmeAirServices::com.acmeair.^service.CustomerService,
+		AcmeAirServices::com.acmeair.^service.FlightService,
+		AcmeAirServices::com.acmeair.^service.TransactionService {}
+
+@technology(morphia)
+mongoServer is morphia::_infrastructure.MongoServer
+	used by services
+		AcmeAirServices::com.acmeair.^service.BookingService,
+		AcmeAirServices::com.acmeair.^service.CustomerService,
+		AcmeAirServices::com.acmeair.^service.FlightService,
+		AcmeAirServices::com.acmeair.^service.TransactionService {
+	default values {
+			local_mongo_database = "acmeair"
+
+			fsync = false
+			w = 0
+			connectionsPerHost = 20
+			threadsAllowedToBlockForConnectionMultiplier = 10
+		}
+
+	endpoints {
+		morphia::_protocols.rest: "http://localhost:27017";
+	}
+}

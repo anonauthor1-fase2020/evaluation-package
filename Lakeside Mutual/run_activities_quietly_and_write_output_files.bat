@@ -1,0 +1,22 @@
+REM You need Python 3 to run the script
+python activity-1-filecount.py > "Produced Result Files\activity-1-filecount.py.out"
+
+REM You need at least Java 11 in order to run the jar
+cd ..
+
+CALL export_java_home.bat
+
+REM Domain analysis
+java -jar static-analyzer-standalone.jar -s "Lakeside Mutual\Reconstructed Models\customer-core\customerCore.data" -i "Lakeside Mutual\Derived Intermediate Models\mapping models\customerCore\customerCore_customerCore.xmi" --invoke_only_specified_phases intermediate_model_validation --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\mapping models\customerManagement\customerManagement_customerManagement.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\mapping models\customerSelfServiceBackend\customerSelfServiceBackend_customerSelfServiceBackend.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\mapping models\policyManagementBackend\policyManagementBackend_policyManagementBackend.xmi" --csv_file="Lakeside Mutual\domain-analysis.csv" > "Lakeside Mutual\Produced Result Files\activity-2-domain-analysis.bat.out"
+
+REM Service analysis (complete)
+java -jar static-analyzer-standalone.jar -s "Lakeside Mutual\Reconstructed Models\customer-core\customerCore.services" -i "Lakeside Mutual\Derived Intermediate Models\service models\customerCore.xmi" --invoke_only_specified_phases intermediate_model_validation --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerManagement.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerSelfServiceBackend.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\policyManagementBackend.xmi" --service_metrics_set="Hirzalla" --service_metrics_set="Engel" --csv_file="Lakeside Mutual\service-analysis-complete.csv" > "Lakeside Mutual\Produced Result Files\activity-3-6-service-analysis-complete.bat.out"
+
+REM Service analysis (Engel et al. metrics)
+java -jar static-analyzer-standalone.jar -s "Lakeside Mutual\Reconstructed Models\customer-core\customerCore.services" -i "Lakeside Mutual\Derived Intermediate Models\service models\customerCore.xmi" --invoke_only_specified_phases intermediate_model_validation --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerManagement.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerSelfServiceBackend.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\policyManagementBackend.xmi" --service_metrics_set="Engel" --csv_file="Lakeside Mutual\service-analysis-engel-metrics.csv" > "Lakeside Mutual\Produced Result Files\activity-3-6-service-analysis-engel-metrics.bat.out"
+
+REM Service analysis (Hirzalla et al. metrics)
+java -jar static-analyzer-standalone.jar -s "Lakeside Mutual\Reconstructed Models\customer-core\customerCore.services" -i "Lakeside Mutual\Derived Intermediate Models\service models\customerCore.xmi" --invoke_only_specified_phases intermediate_model_validation --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerManagement.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerSelfServiceBackend.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\policyManagementBackend.xmi" --service_metrics_set="Hirzalla" --csv_file="Lakeside Mutual\service-analysis-hirzalla-metrics.csv" > "Lakeside Mutual\Produced Result Files\activity-3-6-service-analysis-hirzalla-metrics.bat.out"
+
+REM Service analysis (no metrics)
+java -jar static-analyzer-standalone.jar -s "Lakeside Mutual\Reconstructed Models\customer-core\customerCore.services" -i "Lakeside Mutual\Derived Intermediate Models\service models\customerCore.xmi" --invoke_only_specified_phases intermediate_model_validation --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerManagement.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\customerSelfServiceBackend.xmi" --additional_intermediate_model="Lakeside Mutual\Derived Intermediate Models\service models\policyManagementBackend.xmi" --csv_file="Lakeside Mutual\service-analysis-no-metrics.csv" > "Lakeside Mutual\Produced Result Files\activity-3-6-service-analysis-no-metrics.bat.out"

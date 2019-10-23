@@ -1,0 +1,39 @@
+import technology from "../technology/wxs.technology" as wxs
+import microservices from "../services/AcmeAir.services" as AcmeAirServices
+
+@technology(wxs)
+sessionManager is wxs::_infrastructure.WXSSessionManager
+	used by services
+		AcmeAirServices::com.acmeair.^service.BookingService,
+		AcmeAirServices::com.acmeair.^service.CustomerService,
+		AcmeAirServices::com.acmeair.^service.FlightService,
+		AcmeAirServices::com.acmeair.^service.TransactionService {
+	default values {
+		gridName = "AcmeGrid"
+		gridConnectString = "127.0.0.1:2809"
+		disableNearCacheNameString
+			= "Flight,FlightSegment,AirportCodeMapping,CustomerSession,Booking,Customer"
+		partitionFieldNameString
+			= "Flight:pk.flightSegmentId,FlightSegment:originPort,Booking:pk.customerId"
+	}
+}
+
+@technology(wxs)
+objectGrid is wxs::_infrastructure.ObjectGrid
+	used by services
+		AcmeAirServices::com.acmeair.^service.BookingService,
+		AcmeAirServices::com.acmeair.^service.CustomerService,
+		AcmeAirServices::com.acmeair.^service.FlightService,
+		AcmeAirServices::com.acmeair.^service.TransactionService {
+	default values {
+		gridName = "AcmeGrid"
+		numberOfPartitions = 13
+		minSyncReplicas = 0
+		maxSyncReplicas = 0
+		developmentMode = false
+	}
+
+	endpoints {
+		wxs::_protocols.wxsGrid: "127.0.0.1:2809";
+	}
+}

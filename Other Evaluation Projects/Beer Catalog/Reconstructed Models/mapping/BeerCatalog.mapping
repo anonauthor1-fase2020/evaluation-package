@@ -1,0 +1,125 @@
+import microservices from "../services/BeerCatalog.services" as services
+import technology from "../technology/springBoot.technology" as springBoot
+import technology from "../technology/lombok.technology" as lombok
+
+@technology(lombok)
+type services::domain::Beer {
+	aspects { lombok::_aspects.Data; }
+}
+
+@technology(springBoot)
+@technology(lombok)
+type services::domain::CatalogedBeer {
+	aspects {
+		lombok::_aspects.Data;
+		lombok::_aspects.AllArgsConstructor;
+		springBoot::_aspects.Entity;
+	}
+
+	id {
+		aspects { springBoot::_aspects.Id; springBoot::_aspects.GeneratedValue; }
+	}
+}
+
+@technology(springBoot)
+services::com.example.beercatalogservice.BeerRepository {
+	aspects {
+		springBoot::_aspects.Application("beer-catalog-service");
+	}
+
+	operation crud.deleteAllEntities {
+		parameters {
+			complex entities : springBoot::_types.Iterable;
+		}
+	}
+
+	operation crud.findAll {
+		parameters {
+			complex beers : springBoot::_types.Iterable;
+		}
+	}
+
+	operation crud.findAllById {
+		parameters {
+			complex ids : springBoot::_types.Iterable;
+			complex beers : springBoot::_types.Iterable;
+		}
+	}
+
+	operation crud.findById {
+		parameters {
+			complex beer : springBoot::_types.Optional;
+		}
+	}
+
+	operation crud.saveAll {
+		parameters {
+			complex entities : springBoot::_types.Iterable;
+			complex beers : springBoot::_types.Iterable;
+		}
+	}
+
+	operation pagingAndSorting.findAllSorted {
+		parameters {
+			complex beers : springBoot::_types.Iterable;
+		}
+	}
+
+	operation jpaRepository.deleteInBatch {
+		parameters {
+			complex entities : springBoot::_types.Iterable;
+		}
+	}
+
+	operation jpaRepository.findAllByExample {
+		parameters {
+			complex beer : springBoot::_types.Example;
+		}
+	}
+
+	operation jpaRepository.findAllByExampleWithSort {
+		parameters {
+			complex beer : springBoot::_types.Example;
+		}
+	}
+
+	operation jpaRepository.saveAll {
+		parameters {
+			complex beers : springBoot::_types.Iterable;
+		}
+	}
+}
+
+@technology(springBoot)
+services::com.example.EdgeService {
+	aspects {
+		springBoot::_aspects.Application("edge-service");
+		springBoot::_aspects.EnableZuulProxy;
+	}
+
+	interface BeerClient {
+		aspects { springBoot::_aspects.FeignClient("beer-catalog-service"); }
+	}
+
+	operation BeerClient.readBeers {
+		endpoints { springBoot::_protocols.rest: "/beers"; }
+
+		parameters {
+			complex beers : springBoot::_types.Resources;
+		}
+	}
+
+	operation GoodBeerApiAdapter.goodBeers {
+		endpoints { springBoot::_protocols.rest: "/good-beers"; }
+
+		aspects {
+			springBoot::_aspects.HystrixCommand("fallback");
+			springBoot::_aspects.CrossOrigin("*");
+		}
+
+		parameters {
+			complex beers : springBoot::_types.Collection;
+			complex allBeers : springBoot::_types.Collection;
+		}
+	}
+}

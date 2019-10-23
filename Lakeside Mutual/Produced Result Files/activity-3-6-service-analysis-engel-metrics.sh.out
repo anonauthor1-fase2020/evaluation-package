@@ -1,0 +1,637 @@
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 1
+# Interfaces: 2
+# Operations: 9
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.customercore.CustomerCore.customerInformationHolder
+# Operations: 8
+----------------------------------------------------------------------------------------------------
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 2
+# Interfaces: 4
+# Operations: 7
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder
+# Operations: 3
+----------------------------------------------------------------------------------------------------
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 1
+# Interfaces: 4
+# Operations: 7
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder
+# Operations: 3
+----------------------------------------------------------------------------------------------------
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 1
+# Interfaces: 3
+# Operations: 16
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder
+# Operations: 6
+----------------------------------------------------------------------------------------------------
+Employed protocols:
+	Asynchronous:
+	# Asynchronous protocols: 0
+	Synchronous:
+		rest/json
+	# Synchronous protocols: 1
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 9
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 2
+	head: 0
+	post: 0
+	put: 2
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	internal com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields
+	internal com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto
+	internal com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto
+	Count: 3
+
+Employed valid HTTP methods:
+	get: 3
+	head: 0
+	post: 1
+	put: 2
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 7
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 2
+	head: 0
+	post: 0
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	public com.lakesidemutual.customermanagement.CustomerManagement.interactionLogInformationHolder.acknowledgeInteractions
+	Count: 1
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	public com.lakesidemutual.customermanagement.CustomerManagement.interactionLogInformationHolder.acknowledgeInteractions
+	architecture com.lakesidemutual.customermanagement.CustomerMessageController.messageProcessor.processMessage
+	Count: 2
+
+Employed valid HTTP methods:
+	get: 4
+	head: 0
+	post: 0
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 7
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 2
+	head: 0
+	post: 1
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Employed valid HTTP methods:
+	get: 3
+	head: 0
+	post: 3
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 16
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 3
+	head: 0
+	post: 1
+	put: 0
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.getAge
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.doRiskFactorComputation
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeAgeGroupRiskFactor
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeLocalityRiskFactor
+	Count: 8
+
+Employed valid HTTP methods:
+	get: 6
+	head: 0
+	post: 2
+	put: 0
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################
+RESULT SUMMARY (services' analysis)
+####################################################################################################
+####################################################################################################
+Overview of service models:
+	# Microservices: 5
+	# Interfaces: 13
+	# Operations: 39
+	Largest interface: com.lakesidemutual.customercore.CustomerCore.customerInformationHolder
+		Model file: /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+		# Operations: 8
+----------------------------------------------------------------------------------------------------
+Overview of REST operations:
+	# REST Operations with HTTP method assigned: 26
+	# REST operations with explicit endpoint assigned: 16
+	# get operations: 16
+	# head operations: 0
+	# post operations: 6
+	# put operations: 4
+	# delete operations: 0
+	# connect operations: 0
+	# options operations: 0
+	# trace operations: 0
+	# patch operations: 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################
+Metric 1 (Engel et al.): Interfaces count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	For microservice com.lakesidemutual.customercore.CustomerCore: 2
+----------------------------------------------------------------------------------------------------
+Metric 1 (Engel et al.): Interfaces count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	For microservice com.lakesidemutual.customermanagement.CustomerManagement: 3
+	For microservice com.lakesidemutual.customermanagement.CustomerMessageController: 1
+----------------------------------------------------------------------------------------------------
+Metric 1 (Engel et al.): Interfaces count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	For microservice com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend: 4
+----------------------------------------------------------------------------------------------------
+Metric 1 (Engel et al.): Interfaces count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	For microservice com.lakesidemutual.policymanagement.PolicyManagementBackend: 3
+----------------------------------------------------------------------------------------------------
+Metric 3 (Engel et al.): Dependencies count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Metric 3: Dependencies Count
+	For microservice com.lakesidemutual.customercore.CustomerCore: 0
+----------------------------------------------------------------------------------------------------
+Metric 3 (Engel et al.): Dependencies count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Metric 3: Dependencies Count
+	For microservice com.lakesidemutual.customermanagement.CustomerManagement: 1
+	For microservice com.lakesidemutual.customermanagement.CustomerMessageController: 0
+----------------------------------------------------------------------------------------------------
+Metric 3 (Engel et al.): Dependencies count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Metric 3: Dependencies Count
+	For microservice com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend: 1
+----------------------------------------------------------------------------------------------------
+Metric 3 (Engel et al.): Dependencies count for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Metric 3: Dependencies Count
+	For microservice com.lakesidemutual.policymanagement.PolicyManagementBackend: 1
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (asynchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Asynchronous interaction sizes for service com.lakesidemutual.customercore.CustomerCore:
+	Overall interaction size of service: 0 bits, 0 parameters
+		Input: 0 bits, 0 parameters
+		Result: 0 bits, 0 parameters
+
+	Average interaction size of service (0 operations): NaN bits
+		Input: NaN bits
+		Result: NaN bits
+
+Interaction size of all services in model: 0 bits, 0 operations, 0 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (asynchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Asynchronous interaction sizes for service com.lakesidemutual.customermanagement.CustomerManagement:
+	Overall interaction size of service: 0 bits, 0 parameters
+		Input: 0 bits, 0 parameters
+		Result: 0 bits, 0 parameters
+
+	Average interaction size of service (0 operations): NaN bits
+		Input: NaN bits
+		Result: NaN bits
+
+Asynchronous interaction sizes for service com.lakesidemutual.customermanagement.CustomerMessageController:
+	Overall interaction size of service: 0 bits, 0 parameters
+		Input: 0 bits, 0 parameters
+		Result: 0 bits, 0 parameters
+
+	Average interaction size of service (0 operations): NaN bits
+		Input: NaN bits
+		Result: NaN bits
+
+Interaction size of all services in model: 0 bits, 0 operations, 0 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (asynchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Asynchronous interaction sizes for service com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend:
+	Overall interaction size of service: 0 bits, 0 parameters
+		Input: 0 bits, 0 parameters
+		Result: 0 bits, 0 parameters
+
+	Average interaction size of service (0 operations): NaN bits
+		Input: NaN bits
+		Result: NaN bits
+
+Interaction size of all services in model: 0 bits, 0 operations, 0 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (asynchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Asynchronous interaction sizes for service com.lakesidemutual.policymanagement.PolicyManagementBackend:
+	Overall interaction size of service: 0 bits, 0 parameters
+		Input: 0 bits, 0 parameters
+		Result: 0 bits, 0 parameters
+
+	Average interaction size of service (0 operations): NaN bits
+		Input: NaN bits
+		Result: NaN bits
+
+Interaction size of all services in model: 0 bits, 0 operations, 0 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (synchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Synchronous interaction sizes for service com.lakesidemutual.customercore.CustomerCore:
+	Operation com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode
+		Input: 0 bits, 1 parameters
+		Result: 64 bits, 1 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress
+		Input: 256 bits, 2 parameters
+		Result: 192 bits, 2 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields
+		Input: 0 bits, 1 parameters
+		Result: 64 bits, 1 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto
+		Input: 896 bits, 2 parameters
+		Result: 832 bits, 1 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto
+		Input: 832 bits, 6 parameters
+		Result: 992 bits, 1 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer
+		Input: 0 bits, 2 parameters
+		Result: 832 bits, 1 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer
+		Input: 576 bits, 2 parameters
+		Result: 832 bits, 2 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers
+		Input: 0 bits, 4 parameters
+		Result: 992 bits, 1 parameters
+
+	Operation com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer
+		Input: 512 bits, 4 parameters
+		Result: 832 bits, 1 parameters
+
+	Operation with highest input size: com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto, 896 bits, 2 parameters
+
+	Operation with highest result size: com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto, 992 bits, 1 parameters
+
+	Overall interaction size of service: 8704 bits, 35 parameters
+		Input: 3072 bits, 24 parameters
+		Result: 5632 bits, 11 parameters
+
+	Average interaction size of service (9 operations): 967.11 bits
+		Input: 341.33 bits
+		Result: 625.78 bits
+
+Interaction size of all services in model: 8704 bits, 9 operations, 35 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (synchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Synchronous interaction sizes for service com.lakesidemutual.customermanagement.CustomerManagement:
+	Operation com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder.getCustomers
+		Input: 0 bits, 3 parameters
+		Result: 928 bits, 1 parameters
+
+	Operation com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder.getCustomer
+		Input: 64 bits, 1 parameters
+		Result: 768 bits, 2 parameters
+
+	Operation com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder.updateCustomer
+		Input: 768 bits, 2 parameters
+		Result: 768 bits, 1 parameters
+
+	Operation com.lakesidemutual.customermanagement.CustomerManagement.interactionLogInformationHolder.getInteractionLog
+		Input: 64 bits, 1 parameters
+		Result: 385 bits, 1 parameters
+
+	Operation com.lakesidemutual.customermanagement.CustomerManagement.interactionLogInformationHolder.acknowledgeInteractions
+		Input: 128 bits, 2 parameters
+		Result: 385 bits, 2 parameters
+
+	Operation com.lakesidemutual.customermanagement.CustomerManagement.notificationInformationHolder.getNotifications
+		Input: 0 bits, 0 parameters
+		Result: 160 bits, 1 parameters
+
+	Operation with highest input size: com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder.updateCustomer, 768 bits, 2 parameters
+
+	Operation with highest result size: com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder.getCustomers, 928 bits, 1 parameters
+
+	Overall interaction size of service: 4418 bits, 17 parameters
+		Input: 1024 bits, 9 parameters
+		Result: 3394 bits, 8 parameters
+
+	Average interaction size of service (6 operations): 736.33 bits
+		Input: 170.67 bits
+		Result: 565.67 bits
+
+Synchronous interaction sizes for service com.lakesidemutual.customermanagement.CustomerMessageController:
+	Operation com.lakesidemutual.customermanagement.CustomerMessageController.messageProcessor.processMessage
+		Input: 321 bits, 1 parameters
+		Result: 321 bits, 1 parameters
+
+	Operation with highest input size: com.lakesidemutual.customermanagement.CustomerMessageController.messageProcessor.processMessage, 321 bits, 1 parameters
+
+	Operation with highest result size: com.lakesidemutual.customermanagement.CustomerMessageController.messageProcessor.processMessage, 321 bits, 1 parameters
+
+	Overall interaction size of service: 642 bits, 2 parameters
+		Input: 321 bits, 1 parameters
+		Result: 321 bits, 1 parameters
+
+	Average interaction size of service (1 operations): 642.0 bits
+		Input: 321.0 bits
+		Result: 321.0 bits
+
+Interaction size of all services in model: 5060 bits, 7 operations, 19 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (synchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Synchronous interaction sizes for service com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend:
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.authenticationController.authenticationRequest
+		Input: 128 bits, 1 parameters
+		Result: 128 bits, 2 parameters
+
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.authenticationController.signupUser
+		Input: 128 bits, 1 parameters
+		Result: 128 bits, 2 parameters
+
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.cityStaticDataHolder.getCitiesForPostalCode
+		Input: 0 bits, 1 parameters
+		Result: 64 bits, 1 parameters
+
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder.changeAddress
+		Input: 256 bits, 2 parameters
+		Result: 192 bits, 1 parameters
+
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder.getCustomer
+		Input: 64 bits, 1 parameters
+		Result: 768 bits, 2 parameters
+
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder.registerCustomer
+		Input: 448 bits, 1 parameters
+		Result: 768 bits, 1 parameters
+
+	Operation com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.userInformationHolder.getCurrentUser
+		Input: 0 bits, 0 parameters
+		Result: 128 bits, 1 parameters
+
+	Operation with highest input size: com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder.registerCustomer, 448 bits, 1 parameters
+
+	Operation with highest result size: com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder.getCustomer, 768 bits, 2 parameters
+
+	Overall interaction size of service: 3200 bits, 17 parameters
+		Input: 1024 bits, 7 parameters
+		Result: 2176 bits, 10 parameters
+
+	Average interaction size of service (7 operations): 457.14 bits
+		Input: 146.29 bits
+		Result: 310.86 bits
+
+Interaction size of all services in model: 3200 bits, 7 operations, 17 parameters
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (synchronous) for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Synchronous interaction sizes for service com.lakesidemutual.policymanagement.PolicyManagementBackend:
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers
+		Input: 0 bits, 3 parameters
+		Result: 928 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto
+		Input: 768 bits, 5 parameters
+		Result: 928 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomer
+		Input: 64 bits, 1 parameters
+		Result: 768 bits, 2 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getPolicyHistory
+		Input: 64 bits, 2 parameters
+		Result: 1472 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getActivePolicy
+		Input: 64 bits, 2 parameters
+		Result: 1472 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto
+		Input: 896 bits, 2 parameters
+		Result: 1472 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy
+		Input: 512 bits, 2 parameters
+		Result: 1472 bits, 2 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos
+		Input: 2368 bits, 3 parameters
+		Result: 0 bits, 0 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto
+		Input: 1472 bits, 5 parameters
+		Result: 1568 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicies
+		Input: 0 bits, 3 parameters
+		Result: 1568 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicy
+		Input: 64 bits, 2 parameters
+		Result: 1472 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeRiskFactor
+		Input: 128 bits, 1 parameters
+		Result: 0 bits, 0 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.getAge
+		Input: 0 bits, 1 parameters
+		Result: 0 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.doRiskFactorComputation
+		Input: 0 bits, 2 parameters
+		Result: 0 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeAgeGroupRiskFactor
+		Input: 0 bits, 1 parameters
+		Result: 0 bits, 1 parameters
+
+	Operation com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeLocalityRiskFactor
+		Input: 0 bits, 1 parameters
+		Result: 0 bits, 1 parameters
+
+	Operation with highest input size: com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos, 2368 bits, 3 parameters
+
+	Operation with highest result size: com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto, 1568 bits, 1 parameters
+
+	Overall interaction size of service: 19520 bits, 52 parameters
+		Input: 6400 bits, 36 parameters
+		Result: 13120 bits, 16 parameters
+
+	Average interaction size of service (16 operations): 1220.0 bits
+		Input: 400.0 bits
+		Result: 820.0 bits
+
+Interaction size of all services in model: 19520 bits, 16 operations, 52 parameters
+----------------------------------------------------------------------------------------------------
+Metric 6 (Engel et al.): Cyclic dependencies count /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	com.lakesidemutual.customercore.CustomerCore:
+		Count: 0
+----------------------------------------------------------------------------------------------------
+Metric 6 (Engel et al.): Cyclic dependencies count /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	com.lakesidemutual.customermanagement.CustomerManagement:
+		Count: 0
+	com.lakesidemutual.customermanagement.CustomerMessageController:
+		Count: 0
+----------------------------------------------------------------------------------------------------
+Metric 6 (Engel et al.): Cyclic dependencies count /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend:
+		Count: 0
+----------------------------------------------------------------------------------------------------
+Metric 6 (Engel et al.): Cyclic dependencies count /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+	com.lakesidemutual.policymanagement.PolicyManagementBackend:
+		Count: 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################
+RESULT SUMMARY (Engel et al. metrics)
+####################################################################################################
+####################################################################################################
+Metric 1 (Engel et al.): Interfaces count:
+	# Microservices: 5
+	# Interfaces: 13
+	Avg. # interfaces per service: 2.6
+----------------------------------------------------------------------------------------------------
+Metric 3 (Engel et al.): Dependencies count:
+	# Dependencies: 3
+	Avg. # dependencies per service: 0.6
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (asynchronous) in bits:
+	Overall asynchronous interaction size: 0
+	Overall asynchronous input interaction size: 0
+	Overall asynchronous result interaction size: 0
+	# asynchronous operations: 0
+	Avg. asynchronous interaction size per operation: NaN
+	Avg. asynchronous input interaction size per operation: NaN
+	Avg. asynchronous result interaction size per operation: NaN
+----------------------------------------------------------------------------------------------------
+Metric 5 (Engel et al.): Avg. interaction size (synchronous) in bits:
+	Overall synchronous interaction size: 36484
+	Overall synchronous input interaction size: 11841
+	Overall synchronous result interaction size: 24643
+	# synchronous operations: 39
+	Avg. synchronous interaction size per operation: 935.49
+	Avg. synchronous input interaction size per operation: 303.62
+	Avg. synchronous result interaction size per operation: 631.87
+----------------------------------------------------------------------------------------------------
+Metric 6 (Engel et al.): Cyclic dependencies count:
+	Overall cyclic dependencies count: 0
+	Avg. # cyclic dependencies per service: 0.0
+----------------------------------------------------------------------------------------------------
+####################################################################################################

@@ -1,0 +1,8 @@
+technology ribbon {
+	operation aspects {
+		aspect timeout for infrastructure {
+			int connect;
+			int read;
+		}
+	}
+}

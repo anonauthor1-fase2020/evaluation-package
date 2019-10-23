@@ -1,0 +1,8 @@
+technology javax {
+	service aspects {
+		aspect id for fields;
+		aspect genval for fields {
+			string strategy = "AUTO";
+		}
+	}
+}

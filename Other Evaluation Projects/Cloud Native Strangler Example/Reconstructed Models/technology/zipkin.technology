@@ -1,0 +1,13 @@
+technology zipkin {
+	infrastructure technologies {
+		Zipkin {
+			operation environments = "zipkin";
+		}
+	}
+
+	operation aspects {
+		aspect zipkinBaseUrl for containers, infrastructure {
+			string value <mandatory>;
+		}
+	}
+}

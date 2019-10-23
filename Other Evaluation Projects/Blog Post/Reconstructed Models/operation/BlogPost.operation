@@ -1,0 +1,208 @@
+import technology from "../technology/springBoot.technology" as springBoot
+import technology from "../technology/rabbitMq.technology" as rabbitMq
+import microservices from "../services/BlogPost.services" as blogPostServices
+
+@technology(springBoot)
+container CardServiceContainer deployment technology springBoot::_deployment.Docker
+	deploys blogPostServices::com.spring.netflix.oss.^microservices.api.CardService {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENTRYPOINT java -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/card-service -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8080
+			"
+		);
+	}
+
+	default values {
+		name = "card"
+	}
+}
+
+@technology(springBoot)
+container CardStatementServiceControllerContainer deployment technology springBoot::_deployment.Docker
+	deploys blogPostServices::com.spring.netflix.oss.^microservices.^service.CardStatementServiceController {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENTRYPOINT java -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/card-statement-composite -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8080
+			"
+		);
+	}
+
+	default values {
+		name = "card-statement"
+	}
+}
+
+@technology(springBoot)
+container MonitorDashboardContainer deployment technology springBoot::_deployment.Docker
+	deploys blogPostServices::com.spring.netflix.oss.^microservices.MonitorDashboard {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENV JAVA_OPTS=\"-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode\"
+				ENTRYPOINT java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/monitor-dashboard -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8179
+			"
+		);
+	}
+
+	default values {
+		name = "monitor"
+	}
+}
+
+@technology(springBoot)
+container StatementServiceContainer deployment technology springBoot::_deployment.Docker
+	deploys blogPostServices::com.spring.netflix.oss.^microservices.api.StatementService {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENTRYPOINT java -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/statement-service -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8080
+			"
+		);
+	}
+
+	default values {
+		name = "statement"
+	}
+}
+
+@technology(springBoot)
+configServer is springBoot::_infrastructure.ConfigServer
+	used by services
+		blogPostServices::com.spring.netflix.oss.^microservices.api.CardService,
+		blogPostServices::com.spring.netflix.oss.^microservices.api.StatementService,
+		blogPostServices::com.spring.netflix.oss.^microservices.^service.CardStatementServiceController,
+		blogPostServices::com.spring.netflix.oss.^microservices.MonitorDashboard
+	used by nodes
+		edgeServer,
+		turbine {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENV JAVA_OPTS=\"-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode\"
+				ENTRYPOINT java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 9090
+			"
+		);
+	}
+
+	default values {
+		name = "config-server"
+		git_uri = "https://github.com/fernandoabcampos/microservices-config.git"
+		git_search_path = "MASTER"
+	}
+
+	endpoints {
+		springBoot::_protocols.rest: "http://localhost:9090";
+	}
+}
+
+@technology(springBoot)
+discoveryService is springBoot::_infrastructure.Eureka
+	depends on nodes
+		configServer
+	used by services
+		blogPostServices::com.spring.netflix.oss.^microservices.api.CardService,
+		blogPostServices::com.spring.netflix.oss.^microservices.api.StatementService,
+		blogPostServices::com.spring.netflix.oss.^microservices.^service.CardStatementServiceController,
+		blogPostServices::com.spring.netflix.oss.^microservices.MonitorDashboard {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENV JAVA_OPTS=\"-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode\"
+				ENTRYPOINT java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8761
+			"
+		);
+	}
+
+	default values {
+		name = "discovery-service"
+	}
+}
+
+@technology(springBoot)
+edgeServer is springBoot::_infrastructure.EdgeServer
+	depends on nodes
+		discoveryService {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENV JAVA_OPTS=\"-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode\"
+				ENTRYPOINT java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8765
+			"
+		);
+	}
+
+	default values {
+		name = "edge-server"
+	}
+}
+
+@technology(rabbitMq)
+rabbitMq is rabbitMq::_infrastructure.RabbitMQ
+	used by services
+		blogPostServices::com.spring.netflix.oss.^microservices.MonitorDashboard {
+	aspects {
+		rabbitMq::_aspects.Dockerfile(
+			"
+				EXPOSE 5672
+				EXPOSE 15672
+			"
+		);
+	}
+
+	default values {
+		name = "turbine"
+	}
+}
+
+@technology(springBoot)
+turbine is springBoot::_infrastructure.TurbineAggregator
+	depends on nodes
+		discoveryService,
+		rabbitMq {
+	aspects {
+		springBoot::_aspects.Dockerfile(
+			"
+				VOLUME /tmp
+				ENV environment=docker
+				ADD target/*.jar app.jar
+				ENV JAVA_OPTS=\"-XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode\"
+				ENTRYPOINT java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/turbine -Dspring.profiles.active=$environment -jar /app.jar
+				EXPOSE 8989
+			"
+		);
+	}
+
+	default values {
+		name = "turbine"
+	}
+}

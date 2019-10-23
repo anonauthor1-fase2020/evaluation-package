@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" sourceModelUri="">
+  <imports name="selfServiceBackendServices" importUri="file:///../service models/customerSelfServiceBackend.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="java" importUri="file://../../Reconstructed Models/technology/java.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="lakesideMutual" importUri="file://../../Reconstructed Models/technology/lakesideMutual.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="customerSelfServiceBackend" importUri="file://customerSelfServiceBackend/customerSelfServiceBackend_customerSelfServiceBackend.xmi" importTypeName="DATATYPES"/>
+</intermediate:IntermediateServiceModel>

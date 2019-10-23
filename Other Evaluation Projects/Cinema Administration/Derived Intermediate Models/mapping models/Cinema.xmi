@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" sourceModelUri="">
+  <imports name="services" importUri="file://../service models/Cinema.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="javascript" importUri="file://../../Reconstructed Models/technology/javascript.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="raml" importUri="file://../../Reconstructed Models/technology/raml.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="domain" importUri="file://../data models/Cinema.xmi" importTypeName="DATATYPES"/>
+</intermediate:IntermediateServiceModel>

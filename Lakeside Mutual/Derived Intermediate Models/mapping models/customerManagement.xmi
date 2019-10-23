@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" sourceModelUri="">
+  <imports name="managementServices" importUri="file:///../service models/customerManagement.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="java" importUri="file://../../Reconstructed Models/technology/java.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="customerManagement" importUri="file://customerManagement/customerManagement_customerManagement.xmi" importTypeName="DATATYPES"/>
+</intermediate:IntermediateServiceModel>

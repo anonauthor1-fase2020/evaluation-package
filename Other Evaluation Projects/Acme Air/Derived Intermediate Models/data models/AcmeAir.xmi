@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/domain/AcmeAir.data">
+  <contexts name="Airport" qualifiedName="Airport">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="AirportCodeMapping" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Airport.AirportCodeMapping">
+      <dataFields name="airportCode" qualifiedName="Airport.AirportCodeMapping.airportCode">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="airportName" qualifiedName="Airport.AirportCodeMapping.airportName">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+  <contexts name="Customer" qualifiedName="Customer">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Booking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Booking">
+      <dataFields name="bookingId" qualifiedName="Customer.Booking.bookingId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="flightId" qualifiedName="Customer.Booking.flightId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="Customer.Booking.customerId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="dateOfBooking" qualifiedName="Customer.Booking.dateOfBooking">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Customer">
+      <dataFields name="customerId" qualifiedName="Customer.Customer.customerId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="username" qualifiedName="Customer.Customer.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="password" qualifiedName="Customer.Customer.password">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="status" qualifiedName="Customer.Customer.status">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MemberShipStatus" origin="DATA_MODEL" qualifiedName="Customer.MemberShipStatus"/>
+      </dataFields>
+      <dataFields name="total_miles" qualifiedName="Customer.Customer.total_miles">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="miles_ytd" qualifiedName="Customer.Customer.miles_ytd">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="Customer.Customer.phoneNumber">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumberType" qualifiedName="Customer.Customer.phoneNumberType">
+        <type xsi:type="intermediate:IntermediateComplexType" name="PhoneType" origin="DATA_MODEL" qualifiedName="Customer.PhoneType"/>
+      </dataFields>
+      <dataFields name="address" qualifiedName="Customer.Customer.address">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAddress" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerAddress"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerAddress" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerAddress">
+      <dataFields name="streetAddress1" qualifiedName="Customer.CustomerAddress.streetAddress1">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="streetAddress2" qualifiedName="Customer.CustomerAddress.streetAddress2">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="Customer.CustomerAddress.city">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="stateProvince" qualifiedName="Customer.CustomerAddress.stateProvince">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="country" qualifiedName="Customer.CustomerAddress.country">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="Customer.CustomerAddress.postalCode">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerSession" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.CustomerSession">
+      <dataFields name="id" qualifiedName="Customer.CustomerSession.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="Customer.CustomerSession.customerId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastAccessedTime" qualifiedName="Customer.CustomerSession.lastAccessedTime">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="timeoutTime" qualifiedName="Customer.CustomerSession.timeoutTime">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Bookings" origin="DATA_MODEL" kind="LIST" qualifiedName="Customer.Bookings" structuredList="true">
+      <dataFields name="b" qualifiedName="Customer.Bookings.b">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Booking" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer.Booking"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="PhoneType" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="Customer.PhoneType">
+      <fields name="UNKNOWN" qualifiedName="Customer.PhoneType.UNKNOWN"/>
+      <fields name="HOME" qualifiedName="Customer.PhoneType.HOME"/>
+      <fields name="BUSINESS" qualifiedName="Customer.PhoneType.BUSINESS"/>
+      <fields name="MOBILE" qualifiedName="Customer.PhoneType.MOBILE"/>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="MemberShipStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="Customer.MemberShipStatus">
+      <fields name="NONE" qualifiedName="Customer.MemberShipStatus.NONE"/>
+      <fields name="SILVER" qualifiedName="Customer.MemberShipStatus.SILVER"/>
+      <fields name="GOLD" qualifiedName="Customer.MemberShipStatus.GOLD"/>
+      <fields name="PLATINUM" qualifiedName="Customer.MemberShipStatus.PLATINUM"/>
+      <fields name="EXEC_PLATINUM" qualifiedName="Customer.MemberShipStatus.EXEC_PLATINUM"/>
+      <fields name="GRAPHITE" qualifiedName="Customer.MemberShipStatus.GRAPHITE"/>
+    </complexTypes>
+  </contexts>
+  <contexts name="Flight" qualifiedName="Flight">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Flight" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.Flight">
+      <dataFields name="flightId" qualifiedName="Flight.Flight.flightId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="flightSegmentId" qualifiedName="Flight.Flight.flightSegmentId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="flightSegment" qualifiedName="Flight.Flight.flightSegment">
+        <type xsi:type="intermediate:IntermediateComplexType" name="FlightSegment" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.FlightSegment"/>
+      </dataFields>
+      <dataFields name="scheduledDepartureTime" qualifiedName="Flight.Flight.scheduledDepartureTime">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="scheduledArrivalTime" qualifiedName="Flight.Flight.scheduledArrivalTime">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="firstClassBaseCost" qualifiedName="Flight.Flight.firstClassBaseCost">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="FlightSegment" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.FlightSegment">
+      <dataFields name="flightName" qualifiedName="Flight.FlightSegment.flightName">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="originPort" qualifiedName="Flight.FlightSegment.originPort">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="destPort" qualifiedName="Flight.FlightSegment.destPort">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="miles" qualifiedName="Flight.FlightSegment.miles">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Flights" origin="DATA_MODEL" kind="LIST" qualifiedName="Flight.Flights" structuredList="true">
+      <dataFields name="f" qualifiedName="Flight.Flights.f">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Flight" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Flight.Flight"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+</intermediate:IntermediateDataModel>

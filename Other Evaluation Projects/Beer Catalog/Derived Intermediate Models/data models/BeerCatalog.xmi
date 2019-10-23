@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/domain/BeerCatalog.data">
+  <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Beer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Beer">
+    <dataFields name="name" qualifiedName="Beer.name">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" super="//@complexTypes.0">
+    <dataFields name="id" qualifiedName="CatalogedBeer.id">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+    <dataFields name="name" qualifiedName="Beer.name" inherited="true">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="Beers" origin="DATA_MODEL" kind="LIST" qualifiedName="Beers" structuredList="true">
+    <dataFields name="b" qualifiedName="Beers.b">
+      <type xsi:type="intermediate:IntermediateComplexType" name="Beer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Beer"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" structuredList="true">
+    <dataFields name="b" qualifiedName="CatalogedBeers.b">
+      <type xsi:type="intermediate:IntermediateComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer"/>
+    </dataFields>
+  </complexTypes>
+  <complexTypes xsi:type="intermediate:IntermediateListType" name="CatalogIds" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogIds" structuredList="true">
+    <dataFields name="id" qualifiedName="CatalogIds.id">
+      <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+    </dataFields>
+  </complexTypes>
+</intermediate:IntermediateDataModel>

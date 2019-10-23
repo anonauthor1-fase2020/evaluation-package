@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" sourceModelUri="">
+  <imports name="java" importUri="file://../../Reconstructed Models/technology/java.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="strangler" importUri="file://../../Reconstructed Models/technology/strangler.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="userServices" importUri="file://../service models/user.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="user" importUri="file://../data models/user.xmi" importTypeName="DATATYPES"/>
+</intermediate:IntermediateServiceModel>

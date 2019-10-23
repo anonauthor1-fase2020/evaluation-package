@@ -1,0 +1,31 @@
+import microservices from "../services/BeerCatalog.services" as BeerServices
+import technology from "../technology/springBoot.technology" as springBoot
+
+@technology(springBoot)
+eureka is springBoot::_infrastructure.Eureka
+	used by services
+		BeerServices::com.example.beercatalogservice.BeerRepository,
+		BeerServices::com.example.EdgeService {
+	default values {
+		hostname = "${vcap.application.uris[0]:localhost}"
+		nonSecurePort = 80
+		instanceId = "${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}"
+		leaseRenewalIntervalInSeconds = 5
+		registryFetchIntervalSeconds = 5
+		region = "default"
+		clientRegisterWithEureka = false
+		defaultZone = "${vcap.services.pwa-eureka-service.credentials.uri}/eureka/"
+	}
+
+	endpoints {
+		springBoot::_protocols.rest: "http://localhost:8761";
+	}
+
+	BeerServices::com.example.beercatalogservice.BeerRepository {
+		port = 8080
+	}
+
+	BeerServices::com.example.EdgeService {
+		port = 8081
+	}
+}

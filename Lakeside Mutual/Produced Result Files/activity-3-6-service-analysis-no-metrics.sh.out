@@ -1,0 +1,223 @@
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 1
+# Interfaces: 2
+# Operations: 9
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.customercore.CustomerCore.customerInformationHolder
+# Operations: 8
+----------------------------------------------------------------------------------------------------
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 2
+# Interfaces: 4
+# Operations: 7
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.customermanagement.CustomerManagement.customerInformationHolder
+# Operations: 3
+----------------------------------------------------------------------------------------------------
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 1
+# Interfaces: 4
+# Operations: 7
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend.customerInformationHolder
+# Operations: 3
+----------------------------------------------------------------------------------------------------
+Overview of service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Microservices: 1
+# Interfaces: 3
+# Operations: 16
+----------------------------------------------------------------------------------------------------
+Largest interface: com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder
+# Operations: 6
+----------------------------------------------------------------------------------------------------
+Employed protocols:
+	Asynchronous:
+	# Asynchronous protocols: 0
+	Synchronous:
+		rest/json
+	# Synchronous protocols: 1
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 9
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 2
+	head: 0
+	post: 0
+	put: 2
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	internal com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields
+	internal com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto
+	internal com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto
+	Count: 3
+
+Employed valid HTTP methods:
+	get: 3
+	head: 0
+	post: 1
+	put: 2
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 7
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 2
+	head: 0
+	post: 0
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	public com.lakesidemutual.customermanagement.CustomerManagement.interactionLogInformationHolder.acknowledgeInteractions
+	Count: 1
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	public com.lakesidemutual.customermanagement.CustomerManagement.interactionLogInformationHolder.acknowledgeInteractions
+	architecture com.lakesidemutual.customermanagement.CustomerMessageController.messageProcessor.processMessage
+	Count: 2
+
+Employed valid HTTP methods:
+	get: 4
+	head: 0
+	post: 0
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 7
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 2
+	head: 0
+	post: 1
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Employed valid HTTP methods:
+	get: 3
+	head: 0
+	post: 3
+	put: 1
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+Overview of REST operations for service model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Operations with REST protocol assigned: 16
+# REST operations with explicit endpoint assigned: 4
+
+Employed valid HTTP methods on REST operations with explicit endpoint assigned:
+	get: 3
+	head: 0
+	post: 1
+	put: 0
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+
+REST Operations with explicit endpoint assigned WITHOUT valid HTTP method:
+	Count: 0
+
+Operations with REST protocol assigned WITHOUT valid HTTP method:
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.getAge
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.doRiskFactorComputation
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeAgeGroupRiskFactor
+	internal com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputation.computeLocalityRiskFactor
+	Count: 8
+
+Employed valid HTTP methods:
+	get: 6
+	head: 0
+	post: 2
+	put: 0
+	delete: 0
+	connect: 0
+	options: 0
+	trace: 0
+	patch: 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################
+RESULT SUMMARY (services' analysis)
+####################################################################################################
+####################################################################################################
+Overview of service models:
+	# Microservices: 5
+	# Interfaces: 13
+	# Operations: 39
+	Largest interface: com.lakesidemutual.customercore.CustomerCore.customerInformationHolder
+		Model file: /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/service models/customerCore.xmi
+		# Operations: 8
+----------------------------------------------------------------------------------------------------
+Overview of REST operations:
+	# REST Operations with HTTP method assigned: 26
+	# REST operations with explicit endpoint assigned: 16
+	# get operations: 16
+	# head operations: 0
+	# post operations: 6
+	# put operations: 4
+	# delete operations: 0
+	# connect operations: 0
+	# options operations: 0
+	# trace operations: 0
+	# patch operations: 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################

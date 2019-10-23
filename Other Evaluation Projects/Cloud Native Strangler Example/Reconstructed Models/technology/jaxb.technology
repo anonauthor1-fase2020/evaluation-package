@@ -1,0 +1,9 @@
+technology jaxb {
+	service aspects {
+		aspect AccessorType for types { string accessorType; }
+		aspect Type for types { string name; string propOrder; }
+		aspect RootElement for types { string name; }
+
+		aspect Element for fields { boolean required = false; }
+	}
+}

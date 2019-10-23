@@ -1,0 +1,15 @@
+structure Customer {
+	long id,
+	string name,
+	string username,
+	WishList wishList
+}
+
+list WishList { string wish }
+
+structure Product {
+	long id,
+	string name
+}
+
+list Products { Product p }

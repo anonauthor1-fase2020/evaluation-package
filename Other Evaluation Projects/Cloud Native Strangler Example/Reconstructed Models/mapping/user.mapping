@@ -1,0 +1,9 @@
+import technology from "../technology/java.technology" as java
+import technology from "../technology/strangler.technology" as strangler
+import microservices from "../microservices/user.services" as userServices
+
+@technology(java)
+@technology(strangler)
+type userServices::user::demo.User {
+	aspects { strangler::_aspects.baseEntity; }
+}

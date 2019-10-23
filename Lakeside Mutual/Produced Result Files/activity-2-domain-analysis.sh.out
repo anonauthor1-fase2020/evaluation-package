@@ -1,0 +1,246 @@
+DDD feature overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/customerCore/customerCore_customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# of feature VALUE_OBJECT: 2
+# of feature ENTITY: 2
+# of feature AGGREGATE: 1
+# of feature FACTORY: 1
+# of feature REPOSITORY: 1
+# of feature APPLICATION_SERVICE: 1
+# of feature DOMAIN_SERVICE: 1
+----------------------------------------------------------------------------------------------------
+# of features in Bounded Context customer:
+	# of feature VALUE_OBJECT: 2
+	# of feature ENTITY: 2
+	# of feature AGGREGATE: 1
+	# of feature FACTORY: 1
+	# of feature REPOSITORY: 1
+	# of feature APPLICATION_SERVICE: 1
+# of features in Bounded Context city:
+	# of feature DOMAIN_SERVICE: 1
+----------------------------------------------------------------------------------------------------
+DDD feature overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/customerManagement/customerManagement_customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# of feature VALUE_OBJECT: 2
+# of feature ENTITY: 2
+# of feature AGGREGATE: 1
+# of feature DOMAIN_SERVICE: 1
+# of feature INFRASTRUCTURE_SERVICE: 1
+# of feature REPOSITORY: 1
+----------------------------------------------------------------------------------------------------
+# of features in Bounded Context customer:
+	# of feature VALUE_OBJECT: 1
+# of features in Bounded Context interactionLog:
+	# of feature ENTITY: 2
+	# of feature AGGREGATE: 1
+	# of feature DOMAIN_SERVICE: 1
+	# of feature VALUE_OBJECT: 1
+# of features in Bounded Context domainInfrastructure:
+	# of feature INFRASTRUCTURE_SERVICE: 1
+	# of feature REPOSITORY: 1
+----------------------------------------------------------------------------------------------------
+DDD feature overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/customerSelfServiceBackend/customerSelfServiceBackend_customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# of feature VALUE_OBJECT: 2
+# of feature ENTITY: 1
+# of feature DOMAIN_SERVICE: 1
+# of feature INFRASTRUCTURE_SERVICE: 1
+# of feature REPOSITORY: 1
+----------------------------------------------------------------------------------------------------
+# of features in Bounded Context customer:
+	# of feature VALUE_OBJECT: 2
+# of features in Bounded Context identityAccess:
+	# of feature ENTITY: 1
+	# of feature DOMAIN_SERVICE: 1
+# of features in Bounded Context domainInfrastructure:
+	# of feature INFRASTRUCTURE_SERVICE: 1
+	# of feature REPOSITORY: 1
+----------------------------------------------------------------------------------------------------
+DDD feature overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/policyManagementBackend/policyManagementBackend_policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# of feature VALUE_OBJECT: 7
+# of feature ENTITY: 2
+# of feature AGGREGATE: 1
+# of feature DOMAIN_EVENT: 1
+# of feature INFRASTRUCTURE_SERVICE: 2
+# of feature REPOSITORY: 1
+----------------------------------------------------------------------------------------------------
+# of features in Bounded Context customer:
+	# of feature VALUE_OBJECT: 1
+# of features in Bounded Context policy:
+	# of feature ENTITY: 2
+	# of feature VALUE_OBJECT: 6
+	# of feature AGGREGATE: 1
+	# of feature DOMAIN_EVENT: 1
+# of features in Bounded Context domainInfrastructure:
+	# of feature INFRASTRUCTURE_SERVICE: 2
+	# of feature REPOSITORY: 1
+----------------------------------------------------------------------------------------------------
+Overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/customerCore/customerCore_customerCore.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Bounded Contexts: 4
+----------------------------------------------------------------------------------------------------
+# Structures per Bounded Context:
+	customer: 7
+	customer_dtos: 5
+	city: 1
+	city_dtos: 1
+	
+# Structures in all Bounded Contexts: 14
+# of all structures in domain model 14
+----------------------------------------------------------------------------------------------------
+List count per Bounded Context:
+	customer: 2
+	customer_dtos: 1
+	city: 3
+	city_dtos: 0
+	
+# Lists in all Bounded Contexts: 6
+# of all lists in domain model 6
+----------------------------------------------------------------------------------------------------
+Enumeration count per Bounded Context:
+	customer: 0
+	customer_dtos: 0
+	city: 0
+	city_dtos: 0
+	
+# Enumerations in all Bounded Contexts: 0
+# of all enumerations in domain model 0
+----------------------------------------------------------------------------------------------------
+Overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/customerManagement/customerManagement_customerManagement.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Bounded Contexts: 5
+----------------------------------------------------------------------------------------------------
+# Structures per Bounded Context:
+	customer: 1
+	customer_dtos: 6
+	interactionLog: 4
+	interactionLog_dtos: 2
+	domainInfrastructure: 2
+	
+# Structures in all Bounded Contexts: 15
+# of all structures in domain model 15
+----------------------------------------------------------------------------------------------------
+List count per Bounded Context:
+	customer: 0
+	customer_dtos: 2
+	interactionLog: 2
+	interactionLog_dtos: 0
+	domainInfrastructure: 0
+	
+# Lists in all Bounded Contexts: 4
+# of all lists in domain model 4
+----------------------------------------------------------------------------------------------------
+Enumeration count per Bounded Context:
+	customer: 0
+	customer_dtos: 0
+	interactionLog: 0
+	interactionLog_dtos: 0
+	domainInfrastructure: 0
+	
+# Enumerations in all Bounded Contexts: 0
+# of all enumerations in domain model 0
+----------------------------------------------------------------------------------------------------
+Overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/customerSelfServiceBackend/customerSelfServiceBackend_customerSelfServiceBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Bounded Contexts: 6
+----------------------------------------------------------------------------------------------------
+# Structures per Bounded Context:
+	customer: 2
+	customer_dtos: 6
+	identityAccess: 3
+	identityAccess_dtos: 4
+	domainInfrastructure: 2
+	city_dtos: 1
+	
+# Structures in all Bounded Contexts: 18
+# of all structures in domain model 18
+----------------------------------------------------------------------------------------------------
+List count per Bounded Context:
+	customer: 0
+	customer_dtos: 2
+	identityAccess: 2
+	identityAccess_dtos: 0
+	domainInfrastructure: 0
+	city_dtos: 1
+	
+# Lists in all Bounded Contexts: 5
+# of all lists in domain model 5
+----------------------------------------------------------------------------------------------------
+Enumeration count per Bounded Context:
+	customer: 0
+	customer_dtos: 0
+	identityAccess: 0
+	identityAccess_dtos: 0
+	domainInfrastructure: 0
+	city_dtos: 0
+	
+# Enumerations in all Bounded Contexts: 0
+# of all enumerations in domain model 0
+----------------------------------------------------------------------------------------------------
+Overview for domain model /home/florian/Dokumente/Forschung/Paper/Eigene/FASE 2020/evaluation/Lakeside Mutual/Derived Intermediate Models/mapping models/policyManagementBackend/policyManagementBackend_policyManagementBackend.xmi
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+# Bounded Contexts: 6
+----------------------------------------------------------------------------------------------------
+# Structures per Bounded Context:
+	customer: 2
+	customer_dtos: 5
+	policy: 8
+	policy_dtos: 7
+	risk_dtos: 2
+	domainInfrastructure: 3
+	
+# Structures in all Bounded Contexts: 27
+# of all structures in domain model 27
+----------------------------------------------------------------------------------------------------
+List count per Bounded Context:
+	customer: 2
+	customer_dtos: 1
+	policy: 2
+	policy_dtos: 3
+	risk_dtos: 0
+	domainInfrastructure: 0
+	
+# Lists in all Bounded Contexts: 8
+# of all lists in domain model 8
+----------------------------------------------------------------------------------------------------
+Enumeration count per Bounded Context:
+	customer: 0
+	customer_dtos: 0
+	policy: 0
+	policy_dtos: 0
+	risk_dtos: 0
+	domainInfrastructure: 0
+	
+# Enumerations in all Bounded Contexts: 0
+# of all enumerations in domain model 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################
+RESULT SUMMARY (domain analysis)
+####################################################################################################
+####################################################################################################
+DDD feature overview for domain models:
+	# of feature VALUE_OBJECT: 13
+	# of feature ENTITY: 7
+	# of feature AGGREGATE: 3
+	# of feature FACTORY: 1
+	# of feature REPOSITORY: 4
+	# of feature APPLICATION_SERVICE: 1
+	# of feature DOMAIN_SERVICE: 3
+	# of feature INFRASTRUCTURE_SERVICE: 4
+	# of feature DOMAIN_EVENT: 1
+----------------------------------------------------------------------------------------------------
+Overview of domain models:
+	# Bounded Contexts: 21
+	# of all structures in all domain models: 74
+	# of all lists in all domain models: 23
+	# of all enumerations in all domain models: 0
+----------------------------------------------------------------------------------------------------
+####################################################################################################

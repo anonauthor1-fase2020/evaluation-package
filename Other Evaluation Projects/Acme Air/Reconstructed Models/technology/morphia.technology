@@ -1,0 +1,55 @@
+technology morphia {
+	types {
+		primitive type Boolean based on boolean default;
+		primitive type Byte based on byte default;
+		primitive type Character based on char default;
+		primitive type Date based on date default;
+		primitive type Double based on double default;
+		primitive type Float based on float default;
+		primitive type Integer based on int default;
+		primitive type Long based on long default;
+		primitive type Short based on short default;
+		primitive type String based on string default;
+
+		primitive type BigDecimal;
+		primitive type Exception;
+	}
+
+	protocols {
+		sync rest data formats json default with format json;
+	}
+
+	service aspects {
+		aspect Entity for types {
+			string value;
+		}
+
+		aspect DataService for microservices {
+			string name <mandatory>;
+			string description <mandatory>;
+		}
+
+		aspect protected for operations;
+	}
+
+	infrastructure technologies {
+		ServiceLocator {
+			operation environments = "custom" default;
+		}
+
+		MongoServer {
+			operation environments = "mongodb" default;
+
+			service properties {
+				string local_mongo_database <mandatory, singleval>;
+
+				boolean fsync <singleval> ;
+				int w <singleval>;
+				int connectionsPerHost <singleval>;
+				int threadsAllowedToBlockForConnectionMultiplier <singleval>;
+				boolean socketKeepAlive <singleval>;
+				int maxWaitTime <singleval>;
+			}
+		}
+	}
+}

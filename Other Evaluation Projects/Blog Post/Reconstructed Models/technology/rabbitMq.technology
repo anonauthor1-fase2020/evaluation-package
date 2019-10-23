@@ -1,0 +1,17 @@
+technology RabbitMQ {
+	infrastructure technologies {
+		RabbitMQ {
+			operation environments = "rabbitmq";
+
+			service properties {
+				string name <mandatory, singleval>;
+			}
+		}
+	}
+
+	operation aspects {
+		aspect Dockerfile for containers, infrastructure {
+			string contents <mandatory>;
+		}
+	}
+}

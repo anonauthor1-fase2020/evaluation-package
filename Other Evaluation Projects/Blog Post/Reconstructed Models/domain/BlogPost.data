@@ -1,0 +1,17 @@
+structure Card {
+	long id,
+	string cardHolderName,
+	string pan,
+	string validDate
+}
+
+list Cards { Card c }
+
+structure Statement {
+	long id,
+	long cardId,
+	string operationDate,
+	string value
+}
+
+list Statements { Statement s }

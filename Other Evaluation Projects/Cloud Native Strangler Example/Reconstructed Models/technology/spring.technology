@@ -1,0 +1,144 @@
+technology spring {
+	types {
+		primitive type Boolean based on boolean default;
+		primitive type Byte based on byte default;
+		primitive type Character based on char default;
+		primitive type Date based on date default;
+		primitive type Double based on double default;
+		primitive type Float based on float default;
+		primitive type Integer based on int default;
+		primitive type Long based on long default;
+		primitive type Short based on short default;
+		primitive type String based on string default;
+
+		structure type ResponseEntity;
+		structure type Exception;
+	}
+
+	protocols {
+		sync rest data formats json default with format json;
+		async amqp data formats xml default with format xml;
+	}
+
+	service aspects {
+		aspect application for microservices { string name <mandatory>; }
+
+		aspect webServiceGatewaySupport for microservices;
+
+		aspect feignClient for microservices {
+			string value;
+		}
+
+		aspect get for operations {
+			selector(protocol = rest);
+		}
+
+		aspect post for operations {
+			selector(protocol = rest);
+		}
+
+		aspect rabbitListener for operations {
+			selector(protocol = amqp);
+
+			string queues <mandatory>;
+		}
+
+		aspect pathvar for parameters {
+			selector(protocol = rest, exchange_pattern = in);
+			selector(protocol = rest, exchange_pattern = inout);
+		}
+
+		aspect reqbody for parameters {
+			selector(protocol = rest, exchange_pattern = in);
+			selector(protocol = rest, exchange_pattern = inout);
+		}
+	}
+
+	infrastructure technologies {
+		ConfigService {
+			operation environments = "spring" default;
+
+			service properties {
+				string gitUri;
+			}
+		}
+
+		DiscoveryService {
+			operation environments = "spring" default;
+		}
+
+		EdgeService {
+			operation environments = "spring" default;
+		}
+
+		WebSecurityConfigurerAdapter {
+			operation environments = "spring" default;
+		}
+	}
+
+	operation aspects {
+		aspect application for containers, infrastructure  {
+			string name <mandatory>;
+		}
+
+		aspect port for containers, infrastructure {
+			string value <mandatory>;
+		}
+
+		aspect contextPath for containers, infrastructure {
+			string value <mandatory>;
+		}
+
+		aspect enableZuul for infrastructure;
+
+		aspect zuulIgnoredServices for infrastructure {
+			string value <mandatory>;
+		}
+
+		aspect zuulIgnoredPatterns for infrastructure {
+			string value <mandatory>;
+		}
+
+		aspect zuulRoute for infrastructure {
+			string application <mandatory>;
+			string path <mandatory>;
+			string url;
+		}
+
+		aspect enableHystrix for infrastructure {
+			selector(technology = EdgeService);
+		}
+
+		aspect enableOAuth2Sso for infrastructure;
+
+		aspect enableOAuth2Client for containers;
+
+		aspect oauth2UserInfoUri for containers, infrastructure {
+			string uri <mandatory>;
+		}
+
+		aspect oauth2AccessTokenUri for infrastructure {
+			string uri <mandatory>;
+		}
+
+		aspect oauth2AuthorizationUri for infrastructure {
+			string uri <mandatory>;
+		}
+
+		aspect oauth2ClientId for containers, infrastructure {
+			string id <mandatory>;
+		}
+
+		aspect oauth2ClientSecret for infrastructure {
+			string secret <mandatory>;
+		}
+
+		aspect securityIgnored for infrastructure {
+			string value <mandatory>;
+		}
+
+		aspect enableCsrf for infrastructure {
+			boolean enabled = true;
+		}
+	}
+}

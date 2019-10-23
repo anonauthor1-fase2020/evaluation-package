@@ -1,0 +1,6 @@
+technology lombok {
+	service aspects {
+		aspect Data for types;
+		aspect AllArgsConstructor for types;
+	}
+}

@@ -1,0 +1,213 @@
+import datatypes from "../domain/AcmeAir.data" as domain
+
+functional microservice com.acmeair.^service.BookingService {
+	required microservices {
+		CustomerService,
+		FlightService
+	}
+
+	interface BookingService {
+		bookFlight(
+			sync customerId : string,
+			sync flightSegmentId : string,
+			sync flightId : string,
+			sync out bookingId : string
+		);
+
+		getBooking(
+			sync user : string,
+			sync id : string,
+			sync out booking : domain::Customer.Booking
+		);
+
+		getBookingsByUser(sync user : string, sync out bookings : domain::Customer.Bookings);
+
+		cancelBooking(sync user : string, sync id : string);
+
+		count(sync out bookingCount : long);
+	}
+}
+
+functional microservice com.acmeair.^service.CustomerService {
+	interface CustomerService {
+		createCustomer(
+			sync username : string,
+			sync password : string,
+			sync status : domain::Customer.MemberShipStatus,
+			sync total_miles : int,
+			sync miles_ytd : int,
+			sync phoneNumber : string,
+			sync phoneNumberType : domain::Customer.PhoneType,
+			sync address : domain::Customer.CustomerAddress,
+			sync out customer : domain::Customer.Customer
+		);
+
+		createAddress(
+			sync streetAddress1 : string,
+			sync streetAddress2 : string,
+			sync city : string,
+			sync stateProvince : string,
+			sync country : string,
+			sync postalCode : string,
+			sync out address : domain::Customer.CustomerAddress
+		);
+
+		updateCustomer(
+			sync inout customer : domain::Customer.Customer
+		);
+
+		internal getCustomer(
+			sync username : string,
+			sync out customer : domain::Customer.Customer
+		);
+
+		getCustomerByUsername(
+			sync username : string,
+			sync inout customer : domain::Customer.Customer = getCustomer
+		);
+
+		validateCustomer(
+			sync username : string,
+			sync password : string,
+			sync out validatedCustomer : boolean
+		);
+
+		getCustomerByUsernameAndPassword(
+			sync username : string,
+			sync password : string,
+			sync inout customer : domain::Customer.Customer = getCustomer
+		);
+
+		validateSession(
+			sync sessionid : string,
+			sync inout cSession : domain::Customer.CustomerSession = getSession
+		);
+
+		internal getSession(
+			sync sessionId : string,
+			sync out cSession : domain::Customer.CustomerSession
+		);
+
+		internal removeSession(
+			sync session : domain::Customer.CustomerSession
+		);
+
+		createSessionFromCustomerId(
+			sync customerId : string,
+			sync inout cSession : domain::Customer.CustomerSession = createSession
+		);
+
+		internal createSession(
+			sync sessionId : string,
+			sync customerId : string,
+			sync creation : date,
+			sync expiration : date,
+			sync out cSession : domain::Customer.CustomerSession
+		);
+
+		invalidateSession(
+			sync sessionId : string
+		);
+
+		count(
+			sync out customerCount : long
+		);
+
+		countSessions(
+			sync out sessionCount : long
+		);
+	}
+}
+
+functional microservice com.acmeair.^service.FlightService {
+	interface FlightService {
+		getFlightByFlightId(
+			sync flightId : string,
+			sync flightSegment : string,
+			sync out flight : domain::Flight.Flight
+		);
+
+		internal getFlight(
+			sync flightId : string,
+			sync flightSegment : string,
+			sync out flight : domain::Flight.Flight
+		);
+
+		getFlightByAirportsAndDepartureDate(
+			sync fromAirport : string,
+			sync toAirport : string,
+			sync deptDate : date,
+			sync out flights : domain::Flight.Flights
+		);
+
+		getFlightByAirports(
+			sync fromAirport : string,
+			sync toAirport : string,
+			sync inout flights : domain::Flight.Flights = getFlightBySegment
+		);
+
+		internal getFlightSegment(
+			sync fromAirport : string,
+			sync toAirport : string,
+			sync out segment : domain::Flight.FlightSegment
+		);
+
+		internal getFlightBySegment(
+			sync segment : domain::Flight.FlightSegment,
+			sync deptDate : date,
+			sync out flights : domain::Flight.Flights
+		);
+
+		storeAirportMapping(
+			sync mapping : domain::Airport.AirportCodeMapping
+		);
+
+		createAirportCodeMapping(
+			sync airportCode : string,
+			sync airportName : string,
+			sync out acm : domain::Airport.AirportCodeMapping
+		);
+
+		createNewFlight(
+			sync flightSegmentId : string,
+			sync scheduledDepartureTime : date,
+			sync scheduledArrivalTime : date,
+			sync firstClassBaseCost : float,
+			sync economyClassBaseCost : float,
+			sync numFirstClassSeats : int,
+			sync numEconomyClassSeats : int,
+			sync airplaneTypeId : string
+		);
+
+		storeFlightSegmentFromSegment(
+			sync flightSeg : domain::Flight.FlightSegment
+		);
+
+		storeFlightSegment(
+			sync flightName : string,
+			sync origPort : string,
+			sync destPort : string,
+			sync miles : int
+		);
+
+		countFlightSegments(
+			sync out allSegmentsCount : long
+		);
+
+		countFlights(
+			sync out allFlightsCount : long
+		);
+
+		countAirports(
+			sync out allAirportsCount : long
+		);
+	}
+}
+
+utility microservice com.acmeair.^service.TransactionService {
+	interface TransactionService {
+		prepareForTransaction(
+			sync out fault exception : string
+		);
+	}
+}

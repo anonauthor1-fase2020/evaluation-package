@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/domain/user.data">
+  <contexts name="demo" qualifiedName="demo">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="User" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.User">
+      <dataFields name="id" qualifiedName="demo.User.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="username" qualifiedName="demo.User.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+</intermediate:IntermediateDataModel>

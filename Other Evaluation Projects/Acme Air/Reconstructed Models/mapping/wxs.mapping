@@ -1,0 +1,90 @@
+import microservices from "../services/AcmeAir.services" as services
+import technology from "../technology/wxs.technology" as wxs
+
+@technology(wxs)
+type services::domain::Customer.Booking {
+	aspects { wxs::_aspects.pk; }
+
+	bookingId : wxs::_types.String {
+		aspects { wxs::_aspects.pkField; }
+	}
+
+	customerId : wxs::_types.String {
+		aspects { wxs::_aspects.pkField; }
+	}
+}
+
+@technology(wxs)
+type services::domain::Airport.AirportCodeMapping { }
+
+@technology(wxs)
+type services::domain::Customer.CustomerAddress { }
+
+@technology(wxs)
+type services::domain::Customer.Customer { }
+
+@technology(wxs)
+type services::domain::Customer.CustomerSession { }
+
+@technology(wxs)
+type services::domain::Flight.Flight {
+	firstClassBaseCost : wxs::_types.BigDecimal;
+}
+
+@technology(wxs)
+type services::domain::Flight.FlightSegment { }
+
+@technology(wxs)
+services::com.acmeair.^service.BookingService {
+	aspects {
+		wxs::_aspects.DataService(
+			name = "wxs",
+			description = "eXtreme Scale"
+		);
+	}
+}
+
+@technology(wxs)
+services::com.acmeair.^service.CustomerService {
+	aspects {
+		wxs::_aspects.DataService(
+			name = "wxs",
+			description = "eXtreme Scale"
+		);
+	}
+
+	operation CustomerService.getCustomer { aspects { wxs::_aspects.protected; } }
+	operation CustomerService.getSession { aspects { wxs::_aspects.protected; } }
+	operation CustomerService.removeSession { aspects { wxs::_aspects.protected; } }
+	operation CustomerService.createSession { aspects { wxs::_aspects.protected; } }
+}
+
+@technology(wxs)
+services::com.acmeair.^service.FlightService {
+	aspects {
+		wxs::_aspects.DataService(
+			name = "wxs",
+			description = "eXtreme Scale"
+		);
+	}
+
+	operation FlightService.createNewFlight {
+		parameters {
+			primitive firstClassBaseCost : wxs::_types.BigDecimal;
+			primitive economyClassBaseCost : wxs::_types.BigDecimal;
+		}
+	}
+
+	operation FlightService.getFlight { aspects { wxs::_aspects.protected; } }
+	operation FlightService.getFlightSegment { aspects { wxs::_aspects.protected; } }
+	operation FlightService.getFlightBySegment { aspects { wxs::_aspects.protected; } }
+}
+
+@technology(wxs)
+services::com.acmeair.^service.TransactionService {
+	operation TransactionService.prepareForTransaction {
+		parameters {
+			primitive exception : wxs::_types.Exception;
+		}
+	}
+}

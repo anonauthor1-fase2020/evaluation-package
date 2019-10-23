@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" sourceModelUri="">
+  <imports name="springBoot" importUri="file://../../Reconstructed Models/technology/springBoot.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="services" importUri="file://../../Derived Intermediate Models/service models/BlogPost.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="domain" importUri="file://../../Derived Intermediate Models/data models/BlogPost.xmi" importTypeName="DATATYPES"/>
+  <imports name="VO" importUri="file://../../Derived Intermediate Models/data models/VO.xmi" importTypeName="DATATYPES"/>
+</intermediate:IntermediateServiceModel>

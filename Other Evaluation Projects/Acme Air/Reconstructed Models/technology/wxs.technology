@@ -1,0 +1,59 @@
+technology wxs {
+	types {
+		primitive type Boolean based on boolean default;
+		primitive type Byte based on byte default;
+		primitive type Character based on char default;
+		primitive type Date based on date default;
+		primitive type Double based on double default;
+		primitive type Float based on float default;
+		primitive type Integer based on int default;
+		primitive type Long based on long default;
+		primitive type Short based on short default;
+		primitive type String based on string default;
+
+		primitive type BigDecimal;
+		primitive type Exception;
+	}
+
+	protocols {
+		sync wxsGrid data formats wxsGrid default with format wxsGrid;		
+	}
+
+	service aspects {
+		aspect pk for types;
+		aspect pkField for fields;
+
+		aspect DataService for microservices {
+			string name <mandatory>;
+			string description <mandatory>;
+		}
+
+		aspect protected for operations;
+	}
+
+	infrastructure technologies {
+		WXSSessionManager {
+			operation environments = "custom" default;
+
+			service properties {
+				string gridName <mandatory, singleval>;
+				string gridConnectString <mandatory, singleval>;
+				string disableNearCacheNameString <singleval>;
+				string partitionFieldNameString <singleval>;
+				boolean activateTransactionManagement = false <singleval>;
+			}
+		}
+
+		ObjectGrid {
+			operation environments = "IBM_ObjectGrid" default;
+
+			service properties {
+				string gridName <mandatory, singleval>;
+				int numberOfPartitions <singleval>;
+				int minSyncReplicas <singleval>;
+				int maxSyncReplicas <singleval>;
+				boolean developmentMode <singleval>;
+			}
+		}
+	}
+}

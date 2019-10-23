@@ -1,0 +1,72 @@
+import datatypes from "../domain/strangler.data" as domain
+import technology from "../technology/java.technology" as java
+import technology from "../technology/spring.technology" as spring
+import technology from "../technology/jaxb.technology" as jaxb
+
+@technology(java, typedef=true)
+@technology(spring)
+@endpoints(spring::_protocols.rest: "/v1";)
+@spring::_aspects.application("profile-service")
+functional microservice demo.profile.Profile.ProfileService {
+	required microservices {
+		api.v1.CustomerClient
+	}
+
+	interface profile {
+		@endpoints(spring::_protocols.rest: "/profiles/{username}";)
+		@spring::_aspects.get
+		getProfile(
+			@spring::_aspects.pathvar
+			sync username : string,
+			sync out profile : spring::_types.ResponseEntity,
+			sync out fault exception : spring::_types.Exception
+		);
+
+		@endpoints(spring::_protocols.rest: "/profiles/{username}";)
+		@spring::_aspects.post
+		updateProfile(
+			@spring::_aspects.reqbody
+			sync username : string,
+			sync out profile : spring::_types.ResponseEntity,
+			sync out fault exception : spring::_types.Exception
+		);
+	}
+}
+
+@technology(java, typedef=true)
+@technology(spring)
+@spring::_aspects.webServiceGatewaySupport
+internal functional microservice demo.api.v1.CustomerClient {
+	interface client {
+		getCustomerResponse(
+			sync username : string,
+			sync out response : domain::interactions.GetCustomerResponse
+		);
+
+		updateCustomerResponse(
+			sync profile : domain::demo.Profile,
+			sync out response : domain::interactions.UpdateCustomerResponse
+		);
+	}
+}
+
+@technology(java, typedef=true)
+@technology(spring)
+functional microservice demo.message.Receiver {
+	interface receiver {
+		@async(spring::_protocols.amqp)
+		@spring::_aspects.rabbitListener("customer.update")
+		updateCustomer(sync message : string);
+	}
+}
+
+@technology(java, typedef=true)
+@technology(spring)
+@spring::_aspects.feignClient("user-service")
+internal functional microservice demo.user.UserClient {
+	interface client {
+		@endpoints(spring::_protocols.rest: "/uaa/v1/me";)
+		@spring::_aspects.get
+		getAuthenticatedUser(sync out user : domain::demo.User);
+	}
+}

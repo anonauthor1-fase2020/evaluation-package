@@ -1,0 +1,238 @@
+import technology from "../technology/docker.technology" as docker
+import technology from "../technology/spring.technology" as spring
+import technology from "../technology/hystrix.technology" as hystrix
+import technology from "../technology/zipkin.technology" as zipkin
+import technology from "../technology/ribbon.technology" as ribbon
+import microservices from "../microservices/strangler.services" as stranglerServices
+import microservices from "../microservices/user.services" as userServices
+
+@technology(spring)
+@technology(docker)
+@technology(hystrix)
+@technology(zipkin)
+container ProfileContainer deployment technology docker::_deployment.Docker
+	deploys stranglerServices::demo.api.v1.CustomerClient,
+			stranglerServices::demo.profile.Profile.ProfileService,
+			stranglerServices::demo.message.Receiver,
+			stranglerServices::demo.user.UserClient
+{
+	aspects {
+		zipkin::_aspects.zipkinBaseUrl("http://zipkin:9411/");
+		hystrix::_aspects.enableHystrix;
+
+		spring::_aspects.enableOAuth2Client;
+		spring::_aspects.oauth2UserInfoUri("http://user-service:8181/uaa/user");
+		spring::_aspects.oauth2ClientId("acme");
+
+		docker::_aspects.Dockerfile(
+			'
+				VOLUME /tmp
+				ADD account-service-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+
+	default values {
+		basic endpoints { spring::_protocols.rest: "http://localhost:6789"; }
+	}
+}
+
+@technology(docker)
+@technology(spring)
+container UserContainer deployment technology docker::_deployment.Docker
+	deploys userServices::demo.api.v1.UserService {
+	aspects {
+		docker::_aspects.Dockerfile(
+			'
+				VOLUME /tmp
+				ADD user-service-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+
+		spring::_aspects.port("8181");
+		spring::_aspects.contextPath("/uaa");
+	}
+
+	default values {
+		basic endpoints {
+			spring::_protocols.rest: "http://localhost:8181/uaa";
+		}
+	}
+}
+
+@technology(docker)
+@technology(spring)
+ConfigService is spring::_infrastructure.ConfigService
+	used by nodes
+		ProfileContainer,
+		UserContainer,
+		EdgeService,
+		HystrixDashboard,
+		ZipkinTracing,
+		ProfileWebApplication {
+	aspects {
+		spring::_aspects.application("config-service");
+		spring::_aspects.port("8888");
+
+		docker::_aspects.Dockerfile(
+			'
+				FROM anapsix/alpine-java:8
+				VOLUME /tmp
+				ADD config-service-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+
+	default values {
+		gitUri = "https://github.com/kbastani/legacy-strangler-microservice-config.git"
+	}
+}
+
+@technology(docker)
+@technology(spring)
+DiscoveryService is spring::_infrastructure.DiscoveryService
+	used by services
+		stranglerServices::demo.profile.Profile.ProfileService,
+		stranglerServices::demo.user.UserClient
+	used by nodes
+		EdgeService, ProfileWebApplication {
+	aspects {
+		spring::_aspects.application("discovery-service");
+		spring::_aspects.port("8761");
+
+		docker::_aspects.Dockerfile(
+			'
+				FROM anapsix/alpine-java:8
+				VOLUME /tmp
+				ADD discovery-service-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+}
+
+@technology(docker)
+@technology(spring)
+@technology(hystrix)
+@technology(zipkin)
+@technology(ribbon)
+EdgeService is spring::_infrastructure.EdgeService {
+	aspects {
+		spring::_aspects.application("edge-service");
+		spring::_aspects.port("9999");
+		zipkin::_aspects.zipkinBaseUrl("http://zipkin:9411/");
+
+		hystrix::_aspects.enableHystrix;
+		hystrix::_aspects.timeoutInMilliseconds(timeout=60000);
+
+		ribbon::_aspects.timeout(connect = 3000, read = 60000);
+
+		spring::_aspects.oauth2UserInfoUri("http://${DOCKER_IP:192.168.99.100}:8181/uaa/user");
+		spring::_aspects.securityIgnored("/catalog/**");
+
+		spring::_aspects.enableZuul;
+		spring::_aspects.zuulIgnoredServices("*");
+		spring::_aspects.zuulIgnoredPatterns("/**/api/**");
+		spring::_aspects.zuulRoute(application = "profile-service", path = "/profile/**");
+		spring::_aspects.zuulRoute(application = "user-service", path = "/user/**");
+
+		docker::_aspects.Dockerfile(
+			'
+				FROM anapsix/alpine-java:8
+				VOLUME /tmp
+				ADD edge-service-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+}
+
+@technology(docker)
+@technology(spring)
+@technology(hystrix)
+HystrixDashboard is hystrix::_infrastructure.HystrixDashboard {
+	aspects {
+		spring::_aspects.application("hystrix-dashboard");
+		spring::_aspects.port("6161");
+
+		docker::_aspects.Dockerfile(
+			'
+				FROM anapsix/alpine-java:8
+				VOLUME /tmp
+				ADD hystrix-dashboard-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+}
+
+@technology(docker)
+@technology(spring)
+@technology(zipkin)
+ZipkinTracing is zipkin::_infrastructure.Zipkin {
+	aspects {
+		spring::_aspects.application("zipkin-server");
+		spring::_aspects.port("9411");
+
+		docker::_aspects.Dockerfile(
+			'
+				FROM anapsix/alpine-java:8
+				VOLUME /tmp
+				ADD zipkin-tracing-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+}
+
+@technology(docker)
+@technology(spring)
+@technology(hystrix)
+ProfileWebApplication is spring::_infrastructure.WebSecurityConfigurerAdapter {
+	aspects {
+		spring::_aspects.application("profile-web");
+		spring::_aspects.port("8787");
+		hystrix::_aspects.enableHystrix;
+
+		spring::_aspects.enableOAuth2Sso;
+		spring::_aspects.enableCsrf(false);
+		spring::_aspects.oauth2UserInfoUri("http://${DOCKER_IP:192.168.99.100}:8181/uaa/user");
+		spring::_aspects.oauth2AccessTokenUri("http://${DOCKER_IP:192.168.99.100}:8181/uaa/oauth/token");
+		spring::_aspects.oauth2AuthorizationUri("http://${DOCKER_IP:192.168.99.100}:8181/uaa/oauth/authorize");
+		spring::_aspects.oauth2ClientId("acme");
+		spring::_aspects.oauth2ClientSecret("acmesecret");
+
+		spring::_aspects.enableZuul;
+		spring::_aspects.zuulIgnoredServices("*");
+		spring::_aspects.zuulRoute(
+			application = "edge-service",
+			path = "/api/**",
+			url = "http://${DOCKER_IP:192.168.99.100}:9999"
+		);
+		spring::_aspects.zuulRoute(
+			application = "auth-service",
+			path = "/user/**",
+			url = "http://${DOCKER_IP:192.168.99.100}:8181/uaa/user"
+		);
+
+		docker::_aspects.Dockerfile(
+			'
+				FROM anapsix/alpine-java:8
+				VOLUME /tmp
+				ADD online-store-web-0.0.1-SNAPSHOT.jar app.jar
+				RUN bash -c \'touch /app.jar\'
+				ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+			'
+		);
+	}
+}

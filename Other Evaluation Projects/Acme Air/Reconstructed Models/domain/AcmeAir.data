@@ -1,0 +1,88 @@
+context Airport {
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/AirportCodeMapping.java
+	structure AirportCodeMapping {
+		string airportCode,
+		string airportName
+	}
+}
+
+context Customer {
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/Booking.java
+	structure Booking {
+		string bookingId,
+		string flightId,
+		string customerId,
+		date dateOfBooking
+	}
+
+	list Bookings{ Booking b }
+
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/Customer.java
+	structure Customer {
+		string customerId,
+		string username,
+		string password,
+		MemberShipStatus status,
+		int total_miles,
+		int miles_ytd,
+		string phoneNumber,
+		PhoneType phoneNumberType,
+		CustomerAddress address
+	}
+
+	enum PhoneType {
+		UNKNOWN,
+		HOME,
+		BUSINESS,
+		MOBILE
+	}
+
+	enum MemberShipStatus {
+		NONE,
+		SILVER,
+		GOLD,
+		PLATINUM,
+		EXEC_PLATINUM,
+		GRAPHITE
+	}
+
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/CustomerAddress.java
+	structure CustomerAddress {
+		string streetAddress1,
+		string streetAddress2,
+		string city,
+		string stateProvince,
+		string country,
+		string postalCode
+	}
+
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/CustomerSession.java
+	structure CustomerSession {
+		string id,
+		string customerId,
+		date lastAccessedTime,
+		date timeoutTime
+	}
+}
+
+context Flight {
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/Flight.java
+	structure Flight {
+		string flightId,
+		string flightSegmentId,
+		FlightSegment flightSegment,
+		date scheduledDepartureTime,
+		date scheduledArrivalTime,
+		float firstClassBaseCost
+	}
+
+	list Flights{ Flight f }
+
+	// Source: acmeair/acmeair-common/src/main/java/com/acmeair/entities/FlightSegment.java
+	structure FlightSegment {
+		string flightName,
+		string originPort,
+		string destPort,
+		int miles
+	}
+}

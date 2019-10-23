@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../../Reconstructed Models/customer-core/customerCore.data">
+  <imports name="java" importUri="file://../../../Reconstructed Models/technology/java.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eadr" importUri="file://../../../Reconstructed Models/technology/eadr.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="lakesideMutual" importUri="file://../../../Reconstructed Models/technology/lakesideMutual.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="map" importUri="file://../../../Reconstructed Models/technology/map.technology" importTypeName="TECHNOLOGY"/>
+  <contexts name="customer" qualifiedName="customer">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+      <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+        <properties name="name" type="string"/>
+        <propertyValues value="addresses" property="//@contexts.0/@complexTypes.0/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="id" qualifiedName="customer.Address.id" hidden="true">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="java.GeneratedValue" import="//@imports.0"/>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customer.Address.streetAddress" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customer.Address.postalCode" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customer.Address.city" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="random" qualifiedName="customer.CustomerId.random">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        </returnType>
+        <aspects name="static" qualifiedName="java.static" import="//@imports.0"/>
+      </operations>
+      <dataFields name="id" qualifiedName="customer.CustomerId.id">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity">
+      <featureNames>ENTITY</featureNames>
+      <dataFields name="firstname" qualifiedName="customer.CustomerProfileEntity.firstname">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customer.CustomerProfileEntity.lastname">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customer.CustomerProfileEntity.birthday">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="currentAddress" qualifiedName="customer.CustomerProfileEntity.currentAddress">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+          <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+            <properties name="name" type="string"/>
+            <propertyValues value="addresses" property="//@contexts.0/@complexTypes.2/@dataFields.3/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+        <aspects name="OneToOne" qualifiedName="java.OneToOne" import="//@imports.0">
+          <properties name="cascade" type="string" defaultValue="ALL"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customer.CustomerProfileEntity.email">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customer.CustomerProfileEntity.phoneNumber">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="moveHistory" qualifiedName="customer.CustomerProfileEntity.moveHistory">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.Addresses"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.Addresses"/>
+        <aspects name="Collection" qualifiedName="java.Collection" import="//@imports.0"/>
+        <aspects name="OneToMany" qualifiedName="java.OneToMany" import="//@imports.0">
+          <properties name="cascade" type="string" defaultValue="ALL"/>
+          <properties name="fetch" type="string"/>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+      <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+        <properties name="name" type="string"/>
+        <propertyValues value="customers" property="//@contexts.0/@complexTypes.3/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>ENTITY</featureNames>
+      <featureNames>AGGREGATE</featureNames>
+      <operations name="moveToAddress" qualifiedName="customer.CustomerAggregateRoot.moveToAddress">
+        <parameters name="address" qualifiedName="customer.CustomerAggregateRoot.moveToAddress.address">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.3/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.3/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="MADR" qualifiedName="eadr.MADR" import="//@imports.1">
+          <properties name="value" type="int"/>
+          <properties name="title" type="string"/>
+          <properties name="contextAndProblem" type="string"/>
+          <properties name="alternatives" type="string"/>
+          <properties name="chosenAlternative" type="string"/>
+          <properties name="justification" type="string"/>
+          <propertyValues value="1" property="//@contexts.0/@complexTypes.3/@operations.0/@aspects.0/@properties.0"/>
+          <propertyValues value="Data transfer between interface layer and domain layer" property="//@contexts.0/@complexTypes.3/@operations.0/@aspects.0/@properties.1"/>
+          <propertyValues value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Need to pass information from the interfaces layer to the domain layer without&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;introducing a layering violation&#xA;&#x9;&#x9;&#x9;&#x9;" property="//@contexts.0/@complexTypes.3/@operations.0/@aspects.0/@properties.2"/>
+          <propertyValues value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Pass existing domain objects,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Pass the DTOs directly,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Pass the components of the DTO,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Add a new value type in the domain layer and use it as parameter object&#xA;&#x9;&#x9;&#x9;&#x9;" property="//@contexts.0/@complexTypes.3/@operations.0/@aspects.0/@properties.3"/>
+          <propertyValues value="Pass existing domain objects" property="//@contexts.0/@complexTypes.3/@operations.0/@aspects.0/@properties.4"/>
+          <propertyValues value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;This solution doesn't introduce a layering violation and it is simple because it&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;doesn't require any additional classes.&#xA;&#x9;&#x9;&#x9;&#x9;" property="//@contexts.0/@complexTypes.3/@operations.0/@aspects.0/@properties.5"/>
+        </aspects>
+      </operations>
+      <operations name="updateCustomerProfile" qualifiedName="customer.CustomerAggregateRoot.updateCustomerProfile">
+        <parameters name="updatedCustomerProfile" qualifiedName="customer.CustomerAggregateRoot.updateCustomerProfile.updatedCustomerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <dataFields name="id" qualifiedName="customer.CustomerAggregateRoot.id" immutable="true">
+        <featureNames>IDENTIFIER</featureNames>
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        <aspects name="EmbeddedId" qualifiedName="java.EmbeddedId" import="//@imports.0"/>
+      </dataFields>
+      <dataFields name="customerProfile" qualifiedName="customer.CustomerAggregateRoot.customerProfile" immutable="true">
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerFactory" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerFactory">
+      <featureNames>FACTORY</featureNames>
+      <operations name="create" qualifiedName="customer.CustomerFactory.create">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.4/@operations.0/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.4/@operations.0/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="customerProfile" qualifiedName="customer.CustomerFactory.create.customerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <operations name="formatPhoneNumber" qualifiedName="customer.CustomerFactory.formatPhoneNumber">
+        <featureNames>IDENTIFIER</featureNames>
+        <returnType>
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </returnType>
+        <parameters name="phoneNumberStr" qualifiedName="customer.CustomerFactory.formatPhoneNumber.phoneNumberStr">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <aspects name="static" qualifiedName="java.static" import="//@imports.0"/>
+      </operations>
+      <dataFields name="customerRepository" qualifiedName="customer.CustomerFactory.customerRepository" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerRepository"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerRepository"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerRepository">
+      <featureNames>REPOSITORY</featureNames>
+      <operations name="nextId" qualifiedName="customer.CustomerRepository.nextId">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        </returnType>
+      </operations>
+      <dataFields name="customerAggregate" qualifiedName="customer.CustomerRepository.customerAggregate" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+          <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+            <properties name="name" type="string"/>
+            <propertyValues value="customers" property="//@contexts.0/@complexTypes.5/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="customer.CustomerRepository.customerId" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerService" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerService">
+      <featureNames>APPLICATION_SERVICE</featureNames>
+      <operations name="updateAddress" qualifiedName="customer.CustomerService.updateAddress">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.0/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.0/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customer.CustomerService.updateAddress.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        </parameters>
+        <parameters name="updatedAddress" qualifiedName="customer.CustomerService.updateAddress.updatedAddress">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.6/@operations.0/@parameters.1/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.6/@operations.0/@parameters.1/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+      </operations>
+      <operations name="updateCustomerProfile" qualifiedName="customer.CustomerService.updateCustomerProfile">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.1/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.1/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customer.CustomerService.updateCustomerProfile.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerId"/>
+        </parameters>
+        <parameters name="updatedCustomerProfile" qualifiedName="customer.CustomerService.updateCustomerProfile.updatedCustomerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="customer.CustomerService.createCustomer">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.2/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.2/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="customerProfile" qualifiedName="customer.CustomerService.createCustomer.customerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomers" qualifiedName="customer.CustomerService.getCustomers">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Page" origin="TECHNOLOGY" kind="LIST" qualifiedName="java._types.Page" import="//@imports.2"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.CustomerAggregateRoots"/>
+        </returnType>
+        <parameters name="ids" qualifiedName="customer.CustomerService.getCustomers.ids">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomersPaginated" qualifiedName="customer.CustomerService.getCustomersPaginated">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.CustomerAggregateRoots"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.CustomerAggregateRoots"/>
+        </returnType>
+        <parameters name="filter" qualifiedName="customer.CustomerService.getCustomersPaginated.filter">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="customer.CustomerService.getCustomersPaginated.limit">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="customer.CustomerService.getCustomersPaginated.offset">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+      </operations>
+      <operations name="matchesFilter" qualifiedName="customer.CustomerService.matchesFilter">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Boolean" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </returnType>
+        <parameters name="customer" qualifiedName="customer.CustomerService.matchesFilter.customer">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.5/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+            <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+              <properties name="name" type="string"/>
+              <propertyValues value="customers" property="//@contexts.0/@complexTypes.6/@operations.5/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <parameters name="filter" qualifiedName="customer.CustomerService.matchesFilter.filter">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.Addresses" structuredList="true">
+      <dataFields name="a" qualifiedName="customer.Addresses.a">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.Address">
+          <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+            <properties name="name" type="string"/>
+            <propertyValues value="addresses" property="//@contexts.0/@complexTypes.7/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.CustomerAggregateRoots" structuredList="true">
+      <dataFields name="r" qualifiedName="customer.CustomerAggregateRoots.r">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer.CustomerAggregateRoot">
+          <aspects name="Table" qualifiedName="java.Table" import="//@imports.0">
+            <properties name="name" type="string"/>
+            <propertyValues value="customers" property="//@contexts.0/@complexTypes.8/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+  <contexts name="customer_dtos" qualifiedName="customer_dtos">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.AddressDto">
+      <aspects name="AtomicParameterList" qualifiedName="map.AtomicParameterList" import="//@imports.3"/>
+      <dataFields name="streetAddress" qualifiedName="customer_dtos.AddressDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customer_dtos.AddressDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customer_dtos.AddressDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto">
+      <dataFields name="firstname" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.firstname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.lastname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.birthday">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="JsonFormat" qualifiedName="java.JsonFormat" import="//@imports.0">
+          <properties name="pattern" type="string">
+            <featureNames>#MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="yyyy-MM-dd" property="//@contexts.1/@complexTypes.1/@dataFields.2/@aspects.0/@properties.0"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.email">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customer_dtos.CustomerProfileUpdateRequestDto.phoneNumber">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="PhoneNumber" qualifiedName="lakesideMutual.PhoneNumber" import="//@imports.2"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.CustomerResponseDto">
+      <aspects name="ResourceSupport" qualifiedName="java.ResourceSupport" import="//@imports.0"/>
+      <aspects name="ParameterTree" qualifiedName="map.ParameterTree" import="//@imports.3"/>
+      <dataFields name="customerId" qualifiedName="customer_dtos.CustomerResponseDto.customerId" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="firstname" qualifiedName="customer_dtos.CustomerResponseDto.firstname" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customer_dtos.CustomerResponseDto.lastname" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customer_dtos.CustomerResponseDto.birthday" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customer_dtos.CustomerResponseDto.streetAddress" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customer_dtos.CustomerResponseDto.postalCode" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customer_dtos.CustomerResponseDto.city" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customer_dtos.CustomerResponseDto.email" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customer_dtos.CustomerResponseDto.phoneNumber" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="moveHistory" qualifiedName="customer_dtos.CustomerResponseDto.moveHistory" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.Addresses"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer.Addresses"/>
+        <aspects name="Collection" qualifiedName="java.Collection" import="//@imports.0"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomersResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.CustomersResponseDto">
+      <aspects name="ResourceSupport" qualifiedName="java.ResourceSupport" import="//@imports.0"/>
+      <aspects name="ParameterForest" qualifiedName="map.ParameterForest" import="//@imports.3"/>
+      <dataFields name="customers" qualifiedName="customer_dtos.CustomersResponseDto.customers" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerResponses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer_dtos.CustomerResponses"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerResponses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer_dtos.CustomerResponses"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.PaginatedCustomerResponseDto">
+      <aspects name="ResourceSupport" qualifiedName="java.ResourceSupport" import="//@imports.0"/>
+      <aspects name="Pagination" qualifiedName="map.Pagination" import="//@imports.3"/>
+      <dataFields name="filter" qualifiedName="customer_dtos.PaginatedCustomerResponseDto.filter" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="limit" qualifiedName="customer_dtos.PaginatedCustomerResponseDto.limit" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Integer" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="offset" qualifiedName="customer_dtos.PaginatedCustomerResponseDto.offset" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Integer" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="size" qualifiedName="customer_dtos.PaginatedCustomerResponseDto.size" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.Integer" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="customers" qualifiedName="customer_dtos.PaginatedCustomerResponseDto.customers" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerResponses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer_dtos.CustomerResponses"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerResponses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer_dtos.CustomerResponses"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="CustomerResponses" origin="DATA_MODEL" kind="LIST" qualifiedName="customer_dtos.CustomerResponses" structuredList="true">
+      <dataFields name="d" qualifiedName="customer_dtos.CustomerResponses.d">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.CustomerResponseDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customer_dtos.CustomerResponseDto">
+          <aspects name="ResourceSupport" qualifiedName="java.ResourceSupport" import="//@imports.0"/>
+          <aspects name="ParameterTree" qualifiedName="map.ParameterTree" import="//@imports.3"/>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+  <contexts name="city" qualifiedName="city">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CityLookupService" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="city.CityLookupService">
+      <featureNames>DOMAIN_SERVICE</featureNames>
+      <operations name="loadLookupMap" qualifiedName="city.CityLookupService.loadLookupMap" hidden="true">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.PostalCodesAndCities"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.PostalCodesAndCities"/>
+        </returnType>
+        <aspects name="Multimap" qualifiedName="java.Multimap" import="//@imports.0"/>
+      </operations>
+      <operations name="getLookupMap" qualifiedName="city.CityLookupService.getLookupMap" hidden="true">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.PostalCodesAndCities"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.PostalCodesAndCities"/>
+        </returnType>
+        <aspects name="Multimap" qualifiedName="java.Multimap" import="//@imports.0"/>
+      </operations>
+      <operations name="getCitiesForPostalCode" qualifiedName="city.CityLookupService.getCitiesForPostalCode">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.Cities"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.Cities"/>
+        </returnType>
+        <parameters name="postalCode" qualifiedName="city.CityLookupService.getCitiesForPostalCode.postalCode">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.PostalCodesAndCities" structuredList="true">
+      <dataFields name="postalCode" qualifiedName="city.PostalCodesAndCities.postalCode">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="city.PostalCodesAndCities.city">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.Cities" structuredList="true">
+      <dataFields name="city" qualifiedName="city.Cities.city">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="city.FieldNames" primitiveList="true">
+      <primitiveType name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </complexTypes>
+  </contexts>
+  <contexts name="city_dtos" qualifiedName="city_dtos">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="city_dtos.CitiesResponseDto">
+      <aspects name="AtomicParameter" qualifiedName="map.AtomicParameter" import="//@imports.3"/>
+      <dataFields name="cities" qualifiedName="city_dtos.CitiesResponseDto.cities" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.Cities"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="city.Cities"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+</intermediate:IntermediateDataModel>

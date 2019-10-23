@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/domain/strangler.data">
+  <contexts name="domain" qualifiedName="domain">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="domain.Customer">
+      <dataFields name="username" qualifiedName="domain.Customer.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="firstName" qualifiedName="domain.Customer.firstName">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastName" qualifiedName="domain.Customer.lastName">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="domain.Customer.email">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+  <contexts name="demo" qualifiedName="demo">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Profile" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.Profile">
+      <dataFields name="id" qualifiedName="demo.Profile.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="firstName" qualifiedName="demo.Profile.firstName">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastName" qualifiedName="demo.Profile.lastName">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="demo.Profile.email">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="username" qualifiedName="demo.Profile.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="User" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.User">
+      <dataFields name="id" qualifiedName="demo.User.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="username" qualifiedName="demo.User.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="createdAt" qualifiedName="demo.User.createdAt">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="lastModified" qualifiedName="demo.User.lastModified">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Profiles" origin="DATA_MODEL" kind="LIST" qualifiedName="demo.Profiles" structuredList="true">
+      <dataFields name="p" qualifiedName="demo.Profiles.p">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Profile" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.Profile"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+  <contexts name="interactions" qualifiedName="interactions">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="GetCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="interactions.GetCustomerRequest">
+      <dataFields name="username" qualifiedName="interactions.GetCustomerRequest.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="GetCustomerResponse" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="interactions.GetCustomerResponse">
+      <dataFields name="customer" qualifiedName="interactions.GetCustomerResponse.customer">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="domain.Customer"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UpdateCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="interactions.UpdateCustomerRequest">
+      <dataFields name="customer" qualifiedName="interactions.UpdateCustomerRequest.customer">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="domain.Customer"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UpdateCustomerResponse" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="interactions.UpdateCustomerResponse">
+      <dataFields name="success" qualifiedName="interactions.UpdateCustomerResponse.success">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+      </dataFields>
+    </complexTypes>
+  </contexts>
+</intermediate:IntermediateDataModel>

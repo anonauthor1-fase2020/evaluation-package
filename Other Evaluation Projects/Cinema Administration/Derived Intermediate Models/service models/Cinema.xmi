@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/services/Cinema.services">
+  <imports name="javascript" importUri="file://../../Reconstructed Models/technology/javascript.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="REST" importUri="file://../../Reconstructed Models/technology/rest.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="domain" importUri="file://../data models/Cinema.xmi" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/Cinema.services" name="cinema.api.MovieService" qualifiedName="cinema.api.MovieService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="javascript" import="//@imports.0"/>
+    <technologies name="REST" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="Movies" qualifiedName="cinema.api.MovieService.Movies" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getAllMovies" qualifiedName="cinema.api.MovieService.Movies.getAllMovies" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/movies</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="movies" qualifiedName="cinema.api.MovieService.Movies.getAllMovies.movies" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Movies" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.Movies" import="//@imports.2"/>
+          <aspects name="ok" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getMoviePremieres" qualifiedName="cinema.api.MovieService.Movies.getMoviePremieres" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/movies/premieres</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="movies" qualifiedName="cinema.api.MovieService.Movies.getMoviePremieres.movies" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="MoviePremieresCollection" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.MoviePremieresCollection" import="//@imports.2"/>
+          <aspects name="ok" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="getMovieById" qualifiedName="cinema.api.MovieService.Movies.getMovieById" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/movies/:id</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="movies" qualifiedName="cinema.api.MovieService.Movies.getMovieById.movies" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="MovieCollection" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.MovieCollection" import="//@imports.2"/>
+          <aspects name="ok" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

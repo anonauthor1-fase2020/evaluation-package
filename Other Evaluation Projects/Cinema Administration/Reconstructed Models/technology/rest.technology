@@ -1,0 +1,9 @@
+technology rest {
+	protocols {
+		sync rest data formats json default with format json;
+	}
+
+	service aspects {
+		aspect ok for parameters;
+	}
+}

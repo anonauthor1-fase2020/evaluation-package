@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/services/BeerCatalog.services">
+  <imports name="domain" importUri="file://../data models/BeerCatalog.xmi" importTypeName="DATATYPES"/>
+  <imports name="springBoot" importUri="file://../../Reconstructed Models/technology/springBoot.technology" importTypeName="TECHNOLOGY"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/BeerCatalog.services" name="com.example.beercatalogservice.BeerRepository" qualifiedName="com.example.beercatalogservice.BeerRepository" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="crud" qualifiedName="com.example.beercatalogservice.BeerRepository.crud" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="count" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.count" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="count" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.count.count" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="delete" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.delete" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="catalogedBeer" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.delete.catalogedBeer">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="deleteAll" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.deleteAll" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+      </operations>
+      <operations name="deleteAllEntities" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.deleteAllEntities" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="entities" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.deleteAllEntities.entities">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="deleteById" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.deleteById" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="id" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.deleteById.id">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="existsById" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.existsById" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="id" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.existsById.id">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="findAll" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findAll" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findAll.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findAllById" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findAllById" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="ids" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findAllById.ids">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogIds" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogIds" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findAllById.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findById" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findById" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="id" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findById.id">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.1"/>
+        </parameters>
+        <parameters name="beer" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.findById.beer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="save" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.save" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="catalogedBeer" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.save.catalogedBeer">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beer" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.save.beer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="saveAll" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.saveAll" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="entities" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.saveAll.entities">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.crud.saveAll.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="pagingAndSorting" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="findAll" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting.findAll" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="pageable" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting.findAll.pageable">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Pageable" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="springBoot._types.Pageable" import="//@imports.1"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting.findAll.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Page" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="springBoot._types.Page" import="//@imports.1"/>
+        </parameters>
+      </operations>
+      <operations name="findAllSorted" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting.findAllSorted" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="sort" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting.findAllSorted.sort">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Sort" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="springBoot._types.Sort" import="//@imports.1"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.pagingAndSorting.findAllSorted.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="jpaRepository" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="deleteAllInBatch" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.deleteAllInBatch" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+      </operations>
+      <operations name="deleteInBatch" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.deleteInBatch" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="entities" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.deleteInBatch.entities">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findAll" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAll" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAll.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findAllByExample" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExample" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="beer" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExample.beer">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExample.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findAllByExampleWithSort" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExampleWithSort" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="beer" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExampleWithSort.beer">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+        <parameters name="sort" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExampleWithSort.sort">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Sort" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="springBoot._types.Sort" import="//@imports.1"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllByExampleWithSort.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findAllSorted" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllSorted" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="sort" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllSorted.sort">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Sort" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="springBoot._types.Sort" import="//@imports.1"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllSorted.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="findAllById" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllById" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="ids" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllById.ids">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogIds" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogIds" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.findAllById.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getOne" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.getOne" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="id" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.getOne.id">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.Long" import="//@imports.1"/>
+        </parameters>
+        <parameters name="beer" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.getOne.beer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="saveAll" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.saveAll" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="entities" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.saveAll.entities">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beers" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.saveAll.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="saveAndFlush" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.saveAndFlush" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="catalogedBeer" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.saveAndFlush.catalogedBeer">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="CatalogedBeer" import="//@imports.0"/>
+        </parameters>
+        <parameters name="beer" qualifiedName="com.example.beercatalogservice.BeerRepository.jpaRepository.saveAndFlush.beer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CatalogedBeers" origin="DATA_MODEL" kind="LIST" qualifiedName="CatalogedBeers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/BeerCatalog.services" name="com.example.EdgeService" qualifiedName="com.example.EdgeService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <requiredMicroservices name="com.example.beercatalogservice.BeerRepository" qualifiedName="com.example.beercatalogservice.BeerRepository" localMicroservice="//@microservices.0"/>
+    <interfaces name="GoodBeerApiAdapter" qualifiedName="com.example.EdgeService.GoodBeerApiAdapter" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="goodBeers" qualifiedName="com.example.EdgeService.GoodBeerApiAdapter.goodBeers" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="beers" qualifiedName="com.example.EdgeService.GoodBeerApiAdapter.goodBeers.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Beers" origin="DATA_MODEL" kind="LIST" qualifiedName="Beers" import="//@imports.0"/>
+        </parameters>
+        <parameters name="allBeers" qualifiedName="com.example.EdgeService.GoodBeerApiAdapter.goodBeers.allBeers">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Beers" origin="DATA_MODEL" kind="LIST" qualifiedName="Beers" import="//@imports.0"/>
+          <initializedByOperation name="readBeers" qualifiedName="com.example.EdgeService.BeerClient.readBeers" localOperation="//@microservices.1/@interfaces.1/@operations.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="BeerClient" qualifiedName="com.example.EdgeService.BeerClient" visibility="INTERNAL" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="readBeers" qualifiedName="com.example.EdgeService.BeerClient.readBeers" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="beers" qualifiedName="com.example.EdgeService.BeerClient.readBeers.beers" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Beers" origin="DATA_MODEL" kind="LIST" qualifiedName="Beers" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

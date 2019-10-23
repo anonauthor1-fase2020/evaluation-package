@@ -1,0 +1,112 @@
+import technology from "../technology/springBoot.technology" as springBoot
+import datatypes from "../domain/BlogPost.data" as domain
+import datatypes from "../domain/VO.data" as VO
+
+@technology(springBoot)
+@springBoot::_aspects.Application("card-service")
+functional microservice com.spring.netflix.oss.^microservices.api.CardService {
+	interface cards {
+		@endpoints(springBoot::_protocols.rest: "/api/cards";)
+		@springBoot::_aspects.get
+		getCards(sync out cards : domain::Cards);
+
+		@endpoints(springBoot::_protocols.rest: "/api/card/{cardId}";)
+		@springBoot::_aspects.get
+		getCard(
+			@springBoot::_aspects.pathVariable sync cardId : long,
+			sync out card : domain::Card
+		);
+
+		@endpoints(springBoot::_protocols.rest: "/api/new-card";)
+		@springBoot::_aspects.post
+		createCard(@springBoot::_aspects.requestBody sync newCard : domain::Card);
+	}
+}
+
+@technology(springBoot)
+@endpoints(springBoot::_protocols.rest: "/api";)
+@springBoot::_aspects.Application("card-statement-composite")
+functional microservice com.spring.netflix.oss.^microservices.^service.CardStatementServiceController {
+	required microservices {
+		api.CardService,
+		api.StatementService
+	}
+
+	@springBoot::_aspects.FeignClient("card-service")
+	interface cardClient {
+		@endpoints(springBoot::_protocols.rest: "/cards";)
+		@springBoot::_aspects.get
+		getCards(sync out cards : VO::CardVOs);
+
+		@endpoints(springBoot::_protocols.rest: "/card/{cardId}";)
+		@springBoot::_aspects.get
+		getCard(@springBoot::_aspects.pathVariable sync cardId : long, sync out card : VO::CardVO);
+
+		@endpoints(springBoot::_protocols.rest: "/new-card";)
+		@springBoot::_aspects.post
+		createCard(@springBoot::_aspects.requestBody sync card : VO::CardVO);
+	}
+
+	interface statementClient {
+		@endpoints(springBoot::_protocols.rest: "/statements";)
+		@springBoot::_aspects.get
+		getAllStatements(sync out statements : VO::StatementVOs);
+
+		@endpoints(springBoot::_protocols.rest: "/statement/{statementId}";)
+		@springBoot::_aspects.get
+		getStatement(
+			@springBoot::_aspects.pathVariable sync statementId : long,
+			sync out statement : VO::StatementVO
+		);
+
+		@endpoints(springBoot::_protocols.rest: "/statement";)
+		@springBoot::_aspects.get
+		getStatements(
+			@springBoot::_aspects.requestParam sync cardId : long,
+			sync out statements : VO::StatementVOs
+		);
+	}
+
+	interface controller {
+		@endpoints(springBoot::_protocols.rest: "/statement-by-card";)
+		@springBoot::_aspects.HystrixCommand("defaultCardStatementError")
+		@springBoot::_aspects.get
+		getStatementByCardId(sync cardId : long, sync out statements : springBoot::_types.Map);
+
+		internal defaultCardStatementError(sync cardId : long);
+	}
+}
+
+@technology(springBoot)
+@springBoot::_aspects.Application("monitor-dashboard")
+@springBoot::_aspects.HystrixDashboard
+infrastructure microservice com.spring.netflix.oss.^microservices.MonitorDashboard {
+	interface dashboard {
+		@endpoints(springBoot::_protocols.rest: "/";)
+		home(sync out action : string);
+	}
+}
+
+@technology(springBoot)
+@springBoot::_aspects.Application("statement-service")
+functional microservice com.spring.netflix.oss.^microservices.api.StatementService {
+	interface statements {
+		@endpoints(springBoot::_protocols.rest: "/api/statements";)
+		@springBoot::_aspects.get
+		getAllStatements(sync out statements : domain::Statements);
+
+		@endpoints(springBoot::_protocols.rest: "/api/statement/{statementId}";)
+		@springBoot::_aspects.get
+		getStatement(
+			@springBoot::_aspects.pathVariable sync statementId : long,
+			sync out statement : domain::Statement
+		);
+
+		@endpoints(springBoot::_protocols.rest: "/api/statement";)
+		@springBoot::_aspects.get
+		getStatements(
+			@springBoot::_aspects.requestParam sync cardId : long,
+			sync out statements : domain::Statements
+		);
+	}
+}

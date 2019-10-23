@@ -1,0 +1,25 @@
+import technology from "../technology/spring.technology" as spring
+import technology from "../technology/java.technology" as java
+import technology from "../technology/hystrix.technology" as hystrix
+import datatypes from "../domain/user.data" as user
+
+@technology(java, typedef = true)
+@technology(spring)
+@technology(hystrix)
+@endpoints(spring::_protocols.rest: "/v1";)
+@spring::_aspects.application("user-service")
+functional microservice demo.api.v1.UserService {
+	interface user {
+		@endpoints(spring::_protocols.rest: "/me";)
+		me(
+			sync principal : java::_types.Principal,
+			sync out result : spring::_types.ResponseEntity
+		);
+
+		@endpoints(spring::_protocols.rest: "/user";)
+		user(sync principal : java::_types.Principal, sync out result : java::_types.Principal);
+
+		@hystrix::_aspects.command
+		internal getUserByUsername(sync username : string, sync out user : user::demo.User);
+	}
+}

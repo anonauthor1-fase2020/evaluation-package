@@ -1,0 +1,11 @@
+technology javascript {
+	types {
+		primitive type Boolean based on boolean default;
+		primitive type Number based on byte, short, int, long, float, double default;
+		primitive type String based on string, char, date default;
+		primitive type object;
+		primitive type symbol;
+
+		list type Collection;
+	}
+}

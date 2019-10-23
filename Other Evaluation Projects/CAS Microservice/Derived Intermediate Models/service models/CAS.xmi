@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/services/CAS.services">
+  <imports name="domain" importUri="file://../data models/CAS.xmi" importTypeName="DATATYPES"/>
+  <imports name="springBoot" importUri="file://../../Reconstructed Models/technology/springBoot.technology" importTypeName="TECHNOLOGY"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/CAS.services" name="br.com.alexandre.customer.api.CustomerService" qualifiedName="br.com.alexandre.customer.api.CustomerService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <requiredMicroservices name="br.com.alexandre.api.WishListService" qualifiedName="br.com.alexandre.api.WishListService" localMicroservice="//@microservices.1"/>
+    <interfaces name="Customer" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.0">
+        <addresses>/customer</addresses>
+      </endpoints>
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="find" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer.find" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.1"/>
+        <parameters name="customer" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer.find.customer" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="Customer" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getMyWishList" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer.getMyWishList" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="wishes" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer.getMyWishList.wishes" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="WishList" origin="DATA_MODEL" kind="LIST" qualifiedName="WishList" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getUserName" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer.getUserName" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="username" qualifiedName="br.com.alexandre.customer.api.CustomerService.Customer.getUserName.username" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/services/CAS.services" name="br.com.alexandre.api.WishListService" qualifiedName="br.com.alexandre.api.WishListService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="springBoot" import="//@imports.1"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <interfaces name="Product" qualifiedName="br.com.alexandre.api.WishListService.Product" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <endpoints protocol="rest" dataFormat="json" technology="//@microservices.1/@technologies.0">
+        <addresses>/wishList</addresses>
+      </endpoints>
+      <endpoints protocol="rest" dataFormat="xml">
+        <addresses>/wishList</addresses>
+      </endpoints>
+      <protocols protocol="rest" dataFormat="json"/>
+      <operations name="getMyWishList" qualifiedName="br.com.alexandre.api.WishListService.Product.getMyWishList" visibility="ARCHITECTURE">
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="get" import="//@imports.1"/>
+        <parameters name="products" qualifiedName="br.com.alexandre.api.WishListService.Product.getMyWishList.products" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Products" origin="DATA_MODEL" kind="LIST" qualifiedName="Products" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getUserName" qualifiedName="br.com.alexandre.api.WishListService.Product.getUserName" visibility="INTERNAL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <parameters name="username" qualifiedName="br.com.alexandre.api.WishListService.Product.getUserName.username" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="springBoot._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

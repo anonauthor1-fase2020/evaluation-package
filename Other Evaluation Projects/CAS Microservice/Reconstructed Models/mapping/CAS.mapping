@@ -1,0 +1,12 @@
+import microservices from "../services/CAS.services" as services
+import technology from "../technology/springBoot.technology" as springBoot
+
+@technology(springBoot)
+type services::domain::Customer {
+	aspects { springBoot::_aspects.XmlRootElement; }
+}
+
+@technology(springBoot)
+type services::domain::Product {
+	aspects { springBoot::_aspects.XmlRootElement; }
+}

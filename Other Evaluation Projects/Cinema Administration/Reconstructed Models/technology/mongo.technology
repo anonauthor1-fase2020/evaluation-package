@@ -1,0 +1,45 @@
+technology mongo {
+	infrastructure technologies {
+		mongo {
+			operation environments = "mongo" default;
+
+			service properties {
+				string db <singleval>;
+				string user <singleval>;
+				string password <singleval>;
+				string replSet <singleval>;
+				string server;
+			}
+		}
+	}
+
+	operation aspects {
+		aspect dbParameters for infrastructure {
+			selector (technology = mongo);
+
+			string w;
+			int wtimeout;
+			boolean j;
+			string readPreference;
+			boolean native_parser;
+		}
+
+		aspect serverParameters for infrastructure {
+			selector (technology = mongo);
+
+			boolean autoReconnect;
+			int poolSize;
+			string socketoptions;
+		}
+
+		aspect replsetParameters for infrastructure {
+			selector (technology = mongo);
+
+			string replicaSet;
+			boolean ha;
+			int haInterval;
+			int poolSize;
+			string socketoptions;
+		}
+	}
+}

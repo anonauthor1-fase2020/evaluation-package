@@ -1,0 +1,76 @@
+import microservices from "../microservices/strangler.services" as services
+import technology from "../technology/java.technology" as java
+import technology from "../technology/jaxb.technology" as jaxb
+import technology from "../technology/javax.technology" as javax
+import technology from "../technology/strangler.technology" as strangler
+
+@technology(java)
+@technology(jaxb)
+type services::domain::domain.Customer {
+	aspects {
+		jaxb::_aspects.AccessorType("field");
+		jaxb::_aspects.Type(name = "customer", propOrder = "username, firstname, lastName, email");
+	}
+
+	username { aspects { jaxb::_aspects.Element(true); } }
+	firstName { aspects { jaxb::_aspects.Element(true); } }
+	lastName { aspects { jaxb::_aspects.Element(true); } }
+	email { aspects { jaxb::_aspects.Element(true); } }
+}
+
+@technology(java)
+@technology(jaxb)
+type services::domain::interactions.GetCustomerRequest {
+	aspects {
+		jaxb::_aspects.AccessorType("field");
+		jaxb::_aspects.Type(name = "", propOrder = "username");
+		jaxb::_aspects.RootElement("getCustomerRequest");
+	}
+
+	username { aspects { jaxb::_aspects.Element(true); } }
+}
+
+@technology(java)
+@technology(jaxb)
+type services::domain::interactions.GetCustomerResponse {
+	aspects {
+		jaxb::_aspects.AccessorType("field");
+		jaxb::_aspects.Type(name = "", propOrder = "customer");
+		jaxb::_aspects.RootElement("getCustomerResponse");
+	}
+
+	customer { aspects { jaxb::_aspects.Element(true); } }
+}
+
+@technology(java)
+@technology(jaxb)
+type services::domain::interactions.UpdateCustomerRequest {
+	aspects {
+		jaxb::_aspects.AccessorType("field");
+		jaxb::_aspects.Type(name = "", propOrder = "customer");
+		jaxb::_aspects.RootElement("updateCustomerRequest");
+	}
+
+	customer { aspects { jaxb::_aspects.Element(true); } }
+}
+
+@technology(java)
+@technology(jaxb)
+type services::domain::interactions.UpdateCustomerResponse {
+	aspects {
+		jaxb::_aspects.AccessorType("field");
+		jaxb::_aspects.Type(name = "", propOrder = "success");
+		jaxb::_aspects.RootElement("updateCustomerResponse");
+	}
+}
+
+@technology(strangler)
+@technology(javax)
+@technology(java)
+type services::domain::demo.Profile {
+	aspects {
+		strangler::_aspects.baseEntity;
+	}
+
+	id { aspects { javax::_aspects.id; javax::_aspects.genval; } }
+}

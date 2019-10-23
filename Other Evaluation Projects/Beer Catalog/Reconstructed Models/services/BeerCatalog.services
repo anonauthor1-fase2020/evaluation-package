@@ -1,0 +1,76 @@
+import datatypes from "../domain/BeerCatalog.data" as domain
+import technology from "../technology/springBoot.technology" as springBoot
+
+@technology(springBoot)
+functional microservice com.example.beercatalogservice.BeerRepository {
+	// See Javadoc of org.springframework.data.repository.CrudRepository
+	interface crud {
+		count(sync out count : long);
+		delete(sync catalogedBeer : domain::CatalogedBeer);
+		deleteAll();
+		deleteAllEntities(sync entities : domain::CatalogedBeers);
+		deleteById(sync id : long);
+		existsById(sync id : long);
+		findAll(sync out beers : domain::CatalogedBeers);
+		findAllById(sync ids : domain::CatalogIds, sync out beers : domain::CatalogedBeers);
+		findById(sync id : long, sync out beer : domain::CatalogedBeer);
+		save(sync catalogedBeer : domain::CatalogedBeer, sync out beer : domain::CatalogedBeer);
+		saveAll(sync entities : domain::CatalogedBeers, sync out beers : domain::CatalogedBeers);
+	}
+
+	// See Javadoc of org.springframework.data.repository.PagingAndSortingRepository
+	interface pagingAndSorting {
+		findAll(
+			sync pageable : springBoot::_types.Pageable,
+			sync out beers : springBoot::_types.Page
+		);
+
+		findAllSorted(
+			sync sort : springBoot::_types.Sort,
+			sync out beers : domain::CatalogedBeers
+		);
+	}
+
+	// See Javadoc of org.springframework.data.jpa.repository.JpaRepository
+	interface jpaRepository {
+		deleteAllInBatch();
+		deleteInBatch(sync entities : domain::CatalogedBeers);
+		findAll(sync out beers : domain::CatalogedBeers);
+		findAllByExample(
+			sync beer : domain::CatalogedBeer,
+			sync out beers : domain::CatalogedBeers
+		);
+		findAllByExampleWithSort(
+			sync beer : domain::CatalogedBeer,
+			sync sort : springBoot::_types.Sort,
+			sync out beers : domain::CatalogedBeers
+		);
+		findAllSorted(sync sort : springBoot::_types.Sort, sync out beers : domain::CatalogedBeers);
+		findAllById(sync ids : domain::CatalogIds, sync out beers : domain::CatalogedBeers);
+		getOne(sync id : long, sync out beer : domain::CatalogedBeer);
+		saveAll(sync entities : domain::CatalogedBeers, sync out beers : domain::CatalogedBeers);
+		saveAndFlush(
+			sync catalogedBeer : domain::CatalogedBeer,
+			sync out beer : domain::CatalogedBeers
+		);
+	}
+}
+
+@technology(springBoot)
+functional microservice com.example.EdgeService {
+	required microservices {
+		beercatalogservice.BeerRepository
+	}
+
+	interface GoodBeerApiAdapter {
+		goodBeers(sync out beers : domain::Beers,
+			sync allBeers : domain::Beers = BeerClient.readBeers);
+	}
+
+	internal interface BeerClient {
+		readBeers(sync out beers : domain::Beers);
+	}
+}
+
+
+

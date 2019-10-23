@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/microservices/strangler.services">
+  <imports name="domain" importUri="file://../data models/strangler.xmi" importTypeName="DATATYPES"/>
+  <imports name="java" importUri="file://../../Reconstructed Models/technology/java.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="spring" importUri="file://../../Reconstructed Models/technology/spring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="jaxb" importUri="file://../../Reconstructed Models/technology/jaxb.technology" importTypeName="TECHNOLOGY"/>
+  <microservices sourceModelUri="file://../../Reconstructed Models/microservices/strangler.services" name="demo.profile.Profile.ProfileService" qualifiedName="demo.profile.Profile.ProfileService" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <technologies name="spring" import="//@imports.2"/>
+    <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+      <addresses>/v1</addresses>
+    </endpoints>
+    <protocols protocol="rest" dataFormat="json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+    <requiredMicroservices name="demo.api.v1.CustomerClient" qualifiedName="demo.api.v1.CustomerClient" localMicroservice="//@microservices.1"/>
+    <interfaces name="profile" qualifiedName="demo.profile.Profile.ProfileService.profile" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+      <operations name="getProfile" qualifiedName="demo.profile.Profile.ProfileService.profile.getProfile" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/profiles/{username}</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <aspects name="get" import="//@imports.2"/>
+        <parameters name="username" qualifiedName="demo.profile.Profile.ProfileService.profile.getProfile.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.1"/>
+          <aspects name="pathvar" import="//@imports.2"/>
+        </parameters>
+        <parameters name="profile" qualifiedName="demo.profile.Profile.ProfileService.profile.getProfile.profile" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.ResponseEntity" import="//@imports.2"/>
+        </parameters>
+        <parameters name="exception" qualifiedName="demo.profile.Profile.ProfileService.profile.getProfile.exception" exchangePattern="OUT" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Exception" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.Exception" import="//@imports.2"/>
+        </parameters>
+      </operations>
+      <operations name="updateProfile" qualifiedName="demo.profile.Profile.ProfileService.profile.updateProfile" visibility="ARCHITECTURE">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.0/@technologies.1">
+          <addresses>/profiles/{username}</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <aspects name="post" import="//@imports.2"/>
+        <parameters name="username" qualifiedName="demo.profile.Profile.ProfileService.profile.updateProfile.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.1"/>
+          <aspects name="reqbody" import="//@imports.2"/>
+        </parameters>
+        <parameters name="profile" qualifiedName="demo.profile.Profile.ProfileService.profile.updateProfile.profile" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.ResponseEntity" import="//@imports.2"/>
+        </parameters>
+        <parameters name="exception" qualifiedName="demo.profile.Profile.ProfileService.profile.updateProfile.exception" exchangePattern="OUT" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Exception" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="java._types.Exception" import="//@imports.2"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="application" import="//@imports.2">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="profile-service" property="//@microservices.0/@aspects.0/@properties.0"/>
+    </aspects>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/microservices/strangler.services" name="demo.api.v1.CustomerClient" qualifiedName="demo.api.v1.CustomerClient" visibility="INTERNAL" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <technologies name="spring" import="//@imports.2"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+    <interfaces name="client" qualifiedName="demo.api.v1.CustomerClient.client" visibility="IN_MODEL" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+      <operations name="getCustomerResponse" qualifiedName="demo.api.v1.CustomerClient.client.getCustomerResponse" visibility="IN_MODEL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <parameters name="username" qualifiedName="demo.api.v1.CustomerClient.client.getCustomerResponse.username">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.1"/>
+        </parameters>
+        <parameters name="response" qualifiedName="demo.api.v1.CustomerClient.client.getCustomerResponse.response" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="GetCustomerResponse" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="interactions.GetCustomerResponse" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomerResponse" qualifiedName="demo.api.v1.CustomerClient.client.updateCustomerResponse" visibility="IN_MODEL">
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <parameters name="profile" qualifiedName="demo.api.v1.CustomerClient.client.updateCustomerResponse.profile">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Profile" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.Profile" import="//@imports.0"/>
+        </parameters>
+        <parameters name="response" qualifiedName="demo.api.v1.CustomerClient.client.updateCustomerResponse.response" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdateCustomerResponse" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="interactions.UpdateCustomerResponse" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="webServiceGatewaySupport" import="//@imports.2"/>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/microservices/strangler.services" name="demo.message.Receiver" qualifiedName="demo.message.Receiver" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <technologies name="spring" import="//@imports.2"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+    <interfaces name="receiver" qualifiedName="demo.message.Receiver.receiver" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+      <operations name="updateCustomer" qualifiedName="demo.message.Receiver.receiver.updateCustomer" visibility="ARCHITECTURE">
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <protocols protocol="rest" dataFormat="json"/>
+        <aspects name="rabbitListener" import="//@imports.2">
+          <properties name="queues" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="customer.update" property="//@microservices.2/@interfaces.0/@operations.0/@aspects.0/@properties.0"/>
+        </aspects>
+        <parameters name="message" qualifiedName="demo.message.Receiver.receiver.updateCustomer.message">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="java._types.String" import="//@imports.1"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+  <microservices sourceModelUri="file://../../Reconstructed Models/microservices/strangler.services" name="demo.user.UserClient" qualifiedName="demo.user.UserClient" visibility="INTERNAL" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.1"/>
+    <technologies name="spring" import="//@imports.2"/>
+    <protocols protocol="rest" dataFormat="json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+    <interfaces name="client" qualifiedName="demo.user.UserClient.client" visibility="IN_MODEL" hasImplementedOperations="true">
+      <protocols protocol="rest" dataFormat="json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+      <operations name="getAuthenticatedUser" qualifiedName="demo.user.UserClient.client.getAuthenticatedUser" visibility="IN_MODEL">
+        <endpoints protocol="rest" dataFormat="json" technology="//@microservices.3/@technologies.1">
+          <addresses>/uaa/v1/me</addresses>
+        </endpoints>
+        <protocols protocol="rest" dataFormat="json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="xml"/>
+        <aspects name="get" import="//@imports.2"/>
+        <parameters name="user" qualifiedName="demo.user.UserClient.client.getAuthenticatedUser.user" exchangePattern="OUT">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="User" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="demo.User" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="feignClient" import="//@imports.2">
+      <properties name="value" type="string"/>
+      <propertyValues value="user-service" property="//@microservices.3/@aspects.0/@properties.0"/>
+    </aspects>
+  </microservices>
+</intermediate:IntermediateServiceModel>

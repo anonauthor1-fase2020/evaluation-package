@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../Reconstructed Models/domain/Cinema.data">
+  <versions name="v1">
+    <contexts name="cinema" qualifiedName="v1.cinema">
+      <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Movie" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v1.cinema.Movie">
+        <dataFields name="id" qualifiedName="v1.cinema.Movie.id">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="title" qualifiedName="v1.cinema.Movie.title">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="runtime" qualifiedName="v1.cinema.Movie.runtime">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="format" qualifiedName="v1.cinema.Movie.format">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="plot" qualifiedName="v1.cinema.Movie.plot">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </dataFields>
+        <dataFields name="releaseYear" qualifiedName="v1.cinema.Movie.releaseYear">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="releaseMonth" qualifiedName="v1.cinema.Movie.releaseMonth">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+        <dataFields name="releaseDay" qualifiedName="v1.cinema.Movie.releaseDay">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateListType" name="Movies" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.Movies" structuredList="true">
+        <dataFields name="m" qualifiedName="v1.cinema.Movies.m">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Movie" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v1.cinema.Movie"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateListType" name="MovieCollection" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.MovieCollection" structuredList="true">
+        <dataFields name="m" qualifiedName="v1.cinema.MovieCollection.m">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Movie" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v1.cinema.Movie"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateListType" name="MoviePremieres" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.MoviePremieres" structuredList="true">
+        <dataFields name="m" qualifiedName="v1.cinema.MoviePremieres.m">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Movie" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="v1.cinema.Movie"/>
+        </dataFields>
+      </complexTypes>
+      <complexTypes xsi:type="intermediate:IntermediateListType" name="MoviePremieresCollection" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.MoviePremieresCollection" structuredList="true">
+        <dataFields name="mp" qualifiedName="v1.cinema.MoviePremieresCollection.mp">
+          <type xsi:type="intermediate:IntermediateComplexType" name="MoviePremieres" origin="DATA_MODEL" kind="LIST" qualifiedName="v1.cinema.MoviePremieres"/>
+        </dataFields>
+      </complexTypes>
+    </contexts>
+  </versions>
+</intermediate:IntermediateDataModel>

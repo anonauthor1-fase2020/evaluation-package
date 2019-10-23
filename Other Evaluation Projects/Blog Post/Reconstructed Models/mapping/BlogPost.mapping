@@ -1,0 +1,17 @@
+import technology from "../technology/springBoot.technology" as springBoot
+import microservices from "../services/BlogPost.services" as services
+
+@technology(springBoot)
+type services::domain::Card {
+	aspects { springBoot::_aspects.JsonIgnoreProperties; }
+}
+
+@technology(springBoot)
+type services::VO::CardVO {
+	aspects { springBoot::_aspects.JsonIgnoreProperties; }
+}
+
+@technology(springBoot)
+type services::VO::StatementVO {
+	aspects { springBoot::_aspects.JsonIgnoreProperties; }
+}

@@ -1,0 +1,11 @@
+structure Beer {
+	string name
+}
+list Beers { Beer b }
+
+structure CatalogedBeer extends Beer {
+	long id
+}
+list CatalogedBeers { CatalogedBeer b }
+
+list CatalogIds { long id }

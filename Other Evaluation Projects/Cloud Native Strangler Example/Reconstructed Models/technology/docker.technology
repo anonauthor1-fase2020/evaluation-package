@@ -1,0 +1,13 @@
+technology docker {
+	deployment technologies {
+		Docker {
+			operation environments = "anapsix/alpine-java:8" default;
+		}
+	}
+
+	operation aspects {
+		aspect Dockerfile for containers, infrastructure {
+			string contents <mandatory>;
+		}
+	}
+}

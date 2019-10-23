@@ -1,0 +1,73 @@
+import microservices from "../services/Cinema.services" as cinemaServices
+import technology from "../technology/nodejs.technology" as nodejs
+import technology from "../technology/mongo.technology" as mongo
+
+@technology(nodejs)
+movieServiceServer is nodejs::_infrastructure.nodejs
+	used by services cinemaServices::cinema.api.MovieService {
+	default values {
+		require("express")
+		require("morgan")
+		require("helmet")
+
+		run = "useradd --user-group --create-home --shell /bin/false nupp && apt-get clean"
+		env = "HOME=/home/nupp"
+		copy = "package.json npm-shrinkwrap.json $HOME/app/"
+		copy = "src/ $HOME/app/src"
+		run = "chown -R nupp:nupp $HOME/* /usr/local/"
+		workdir = "$HOME/app"
+		run = "npm cache clean && npm install --silent --progress=false --production"
+		run = "chown -R nupp:nupp $HOME/*"
+		user = "nupp"
+		expose = 3000
+		cmd = '["npm", "start"]'
+	}
+}
+
+@technology(mongo)
+mongoDb is mongo::_infrastructure.mongo
+	used by nodes movieServiceServer {
+	aspects {
+		mongo::_aspects.dbParameters(
+			w = "majority",
+			wtimeout = 10000,
+			j = true,
+			readPreference = "ReadPreference.SECONDARY_PREFERRED",
+			native_parser = false
+		);
+
+		mongo::_aspects.serverParameters(
+			autoReconnect = true,
+			poolSize = 10,
+			socketoptions =
+			"
+				keepAlive: 300,
+      			connectTimeoutMS: 30000,
+      			socketTimeoutMS: 30000
+			"
+		);
+
+		mongo::_aspects.replsetParameters(
+			replicaSet = "rs1",
+			ha = true,
+			haInterval = 1000,
+			poolSize = 10,
+			socketoptions =
+			"
+				keepAlive: 300,
+      			connectTimeoutMS: 30000,
+      			socketTimeoutMS: 30000
+			"
+		);
+	}
+
+	default values {
+		db = "movies"
+		user = "cristian"
+		password = "cristianPassword2017"
+
+		server = "192.168.99.100:27017"
+		server = "192.168.99.101:27017"
+		server = "192.168.99.102:27017"
+	}
+}

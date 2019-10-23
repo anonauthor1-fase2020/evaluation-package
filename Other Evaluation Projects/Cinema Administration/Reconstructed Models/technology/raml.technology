@@ -1,0 +1,11 @@
+technology raml {
+	service aspects {
+		aspect resourceType for types {
+			string name <mandatory>;
+			string method = "get";
+			int response = 200;
+			string body = "application/json";
+			string _type = "<<item>>";
+		}
+	}
+}
